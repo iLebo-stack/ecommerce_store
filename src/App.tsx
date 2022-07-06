@@ -4,13 +4,36 @@ import './index_styles/normalize.scss';
 import { Header } from './components/Header/Header';
 import { Main } from './components/Main/Main';
 
-class  App extends React.Component {
+interface State {
+  selectedCurrency: string;
+}
+
+class  App extends React.Component<{}, State> {
+  state: State = {
+    selectedCurrency: '$',
+  }
+
+  constructor(props: {} | Readonly<{}>) {
+    super(props)
+
+    this.handleCurrencyChange = this.handleCurrencyChange.bind(this);
+  }
+
+  handleCurrencyChange(value: string) {
+    this.setState({ selectedCurrency: value});
+  }
+
   render() {
+    const { selectedCurrency } = this.state;
+
     return (
       <div className="App">
-        <Header />
+        <Header
+          handleCurrencyChange={this.handleCurrencyChange}
+          selectedCurrency={selectedCurrency}
+        />
   
-        <Main />
+        <Main selectedCurrency={selectedCurrency} />
       </div>
     );
   }

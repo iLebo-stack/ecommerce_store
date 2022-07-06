@@ -5,8 +5,15 @@ import shoppingBag from '../../images/shopping-bag-icon.svg';
 import cartIcon from '../../images/cart-icon.svg';
 import './Header.scss';
 
-export class Header extends React.Component {
+interface Props {
+  handleCurrencyChange: (value: string) => void;
+  selectedCurrency: string;
+}
+
+export class Header extends React.Component<Props, {}> {
   render() {
+    const { handleCurrencyChange, selectedCurrency } = this.props;
+
     return (
       <header className="header">
         <nav className="nav">
@@ -19,9 +26,14 @@ export class Header extends React.Component {
   
         <div className="header-controls">
           <div className="currency-converter">
-            <select name="" id="">
+            <select
+              value={selectedCurrency}
+              onChange={(event) => {
+                handleCurrencyChange(event.target.value)
+              }}
+            >
               {currencies.map(({ id, content, symbol }) => (
-                <option value={id} key={id}>{`${symbol} ${content}`}</option>
+                <option value={symbol} key={id}>{`${symbol} ${content}`}</option>
               ))}
             </select>
           </div>
