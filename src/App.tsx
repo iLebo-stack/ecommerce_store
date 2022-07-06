@@ -1,14 +1,19 @@
 import React from 'react';
-import './reset.scss';
-import './App.scss';
+import './index_styles/reset.scss';
+import './index_styles/normalize.scss';
 import { Header } from './components/Header/Header';
+import { Main } from './components/Main/Main';
 
-const  App: React.FC = () => {
-  return (
-    <div className="App">
-      <Header />
-    </div>
-  );
+class  App extends React.Component {
+  render() {
+    return (
+      <div className="App">
+        <Header />
+  
+        <Main />
+      </div>
+    );
+  }
 }
 
 export default App;

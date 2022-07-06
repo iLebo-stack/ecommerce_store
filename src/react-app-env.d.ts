@@ -10,3 +10,10 @@ interface Currency {
   content: string;
   symbol: string;
 }
+
+interface Product {
+  id: number;
+  name: string;
+  image: string;
+  price: number;
+}
