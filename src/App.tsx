@@ -1,10 +1,12 @@
 import React from 'react';
+import './reset.scss';
 import './App.scss';
+import { Header } from './components/Header/Header';
 
-function App() {
+const  App: React.FC = () => {
   return (
     <div className="App">
-      <h1>eCommerce store coming soon...</h1>
+      <Header />
     </div>
   );
 }
