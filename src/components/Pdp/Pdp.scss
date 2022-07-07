@@ -1,0 +1,130 @@
+.product_preview {
+  display: flex;
+  margin-bottom: 191px;
+
+  &__title {
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 27px;
+    margin-bottom: 16px;
+  }
+
+  &__description {
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 27px;
+    margin-bottom: 43px;
+  }
+
+  &__side_images {
+    display: flex;
+    flex-direction: column;
+    row-gap: 32px;
+    margin-right: 50px; /*I must calculate the actual one*/
+  }
+
+  &__main_image {
+    margin-right: 100px;
+  }
+
+  &__side_image {
+    width: 80px;
+    height: 80px;
+  }
+
+  &__image {
+    min-width: 610px;
+    width: 100%;
+    height: auto;
+  }
+
+  &__details {
+    width: 292px;
+
+    &__label {
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 18px;
+      margin-bottom: 8px;
+    }
+  }
+
+  &__size_buttons {
+    display: flex;
+    column-gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  &__size_button {
+    background-color: #fff;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 18px;
+    width: 63px;
+    height: 45px;
+    border: 1px solid #1d1f22;
+    cursor: pointer;
+
+    &--selected {
+      background-color: #1d1f22;
+    }
+  }
+
+  &__color_buttons {
+    display: flex;
+    column-gap: 8px;
+    margin-bottom: 38px;
+  }
+
+  &__color_button {
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+
+    &--gray {
+      background-color: #d3d2d5;
+    }
+
+    &--black {
+      background-color: #2b2b2b;
+    }
+
+    &--green {
+      background-color: #0f6450;
+    }
+
+    &--selected {
+      background-color: #5ece7b;
+    }
+  }
+
+  &__price {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 18px;
+    margin-bottom: 20px;
+  }
+
+  &__price_label {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 18px;
+    margin-bottom: 10px;
+  }
+
+  &__button {
+    width: 100%;
+    color: #fff;
+    background: #5ECE7B;
+    padding: 16px 32px;
+    margin-bottom: 40px;
+    cursor: pointer;
+  }
+
+  &__promotion {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 159.96%;
+  }
+}

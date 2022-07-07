@@ -9,10 +9,16 @@ a {
 
 ul,
 h1,
+h2,
 p {
   margin: 0;
 }
 
-button {
+button,
+select {
   border: none;
+}
+
+select {
+  appearance: none;
 }

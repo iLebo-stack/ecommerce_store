@@ -27,16 +27,24 @@ export class Header extends React.Component<Props, {}> {
         <div className="header-controls">
           <div className="currency-converter">
             <select
+              className="currency-converter__selector"
               value={selectedCurrency}
               onChange={(event) => {
                 handleCurrencyChange(event.target.value)
               }}
             >
               {currencies.map(({ id, content, symbol }) => (
-                <option value={symbol} key={id}>{`${symbol} ${content}`}</option>
+                <option
+                  value={symbol}
+                  key={id}
+                  className="currency-converter__selector__option"
+                >
+                  {`${symbol} ${content}`}
+                </option>
               ))}
             </select>
           </div>
+          
           <div className="cart">
             <img src={cartIcon} alt="" className="cart__image" />
           </div>

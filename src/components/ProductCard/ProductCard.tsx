@@ -4,11 +4,16 @@ import './ProductCard.scss';
 interface Props {
   product: Product;
   selectedCurrency: string;
+  handleClickedProduct: (product: Product) => void;
 }
 
 export class ProductCard extends React.Component<Props, {}> { 
   render() {
-    const { selectedCurrency , product } = this.props;
+    const {
+      selectedCurrency,
+      product,
+      handleClickedProduct,
+    } = this.props;
     const { image, name, price } = product;
 
     return (
@@ -19,6 +24,9 @@ export class ProductCard extends React.Component<Props, {}> {
         <button
           type="button"
           className="products__card-button"
+          onClick={() => {
+            handleClickedProduct(product);
+          }}
         >
           {false}
         </button>
