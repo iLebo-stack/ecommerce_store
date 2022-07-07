@@ -16,5 +16,7 @@ interface Product {
   name: string;
   image: string;
   price: number;
-  description;
+  description: string;
+  colors: string[];
+  sizes: string[];
 }

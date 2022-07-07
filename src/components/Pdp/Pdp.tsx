@@ -1,4 +1,5 @@
 import React from 'react';
+import cn from 'classnames';
 import './Pdp.scss';
 
 interface Props {
@@ -7,18 +8,19 @@ interface Props {
 }
 
 interface State {
-  isColorSelected: boolean;
-  isSizeSelected: boolean;
+  selectedColor: string;
+  selectedSize: string;
 }
 
 export class Pdp extends React.Component<Props, State> {
   state = {
-    isColorSelected: false,
-    isSizeSelected: false,
+    selectedColor: '',
+    selectedSize: 'S',
   }
 
   render() {
     const { product, selectedCurrency } = this.props;
+    const { selectedColor, selectedSize } = this.state;
 
     return (
       <section className="product_preview">
@@ -57,10 +59,20 @@ export class Pdp extends React.Component<Props, State> {
             <p className="product_preview__details__label">SIZE:</p>
 
             <div className="product_preview__size_buttons">
-              <button className="product_preview__size_button">XS</button>
-              <button className="product_preview__size_button">S</button>
-              <button className="product_preview__size_button">M</button>
-              <button className="product_preview__size_button">L</button>
+              {product.sizes.map(sizeSelector => (
+                <button
+                  type="button"
+                  onClick={() => {
+                    this.setState({ selectedSize: sizeSelector })
+                  }}
+                  className={cn(
+                    'product_preview__size_button',
+                    { 'product_preview__size_button--selected': selectedSize === sizeSelector }
+                  )}
+                >
+                  {sizeSelector}
+                </button>
+              ))}
             </div>
           </div>
 
@@ -68,9 +80,20 @@ export class Pdp extends React.Component<Props, State> {
             <p className="product_preview__details__label">COLOR:</p>
 
             <div className="product_preview__color_buttons">
-              <button className="product_preview__color_button product_preview__color_button--gray"></button>
-              <button className="product_preview__color_button product_preview__color_button--black"></button>
-              <button className="product_preview__color_button product_preview__color_button--green"></button>
+              {product.colors.map(colorSelector => (
+                <button
+                  type="button"
+                  style={ { backgroundColor: colorSelector } }
+                  onClick={() => {
+                    this.setState({ selectedColor: colorSelector })
+                  }}
+                  className={cn(
+                    'product_preview__color_button',
+                    { 'product_preview__color_button--selected': selectedColor === colorSelector },
+                  )}
+                >
+                </button>
+              ))}
             </div>
           </div>
 

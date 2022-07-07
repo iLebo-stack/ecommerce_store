@@ -21,6 +21,8 @@ export class ProductList extends React.Component<Props, State> {
       price: 0,
       name: '',
       description: '',
+      colors: [],
+      sizes: [],
     },
     isProductClicked: false,
   }

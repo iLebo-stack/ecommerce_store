@@ -67,6 +67,7 @@
 
     &--selected {
       background-color: #1d1f22;
+      color: #fff;
     }
   }
 
@@ -81,20 +82,8 @@
     height: 36px;
     cursor: pointer;
 
-    &--gray {
-      background-color: #d3d2d5;
-    }
-
-    &--black {
-      background-color: #2b2b2b;
-    }
-
-    &--green {
-      background-color: #0f6450;
-    }
-
     &--selected {
-      background-color: #5ece7b;
+      border: 1px solid #5ece7b;
     }
   }
 
