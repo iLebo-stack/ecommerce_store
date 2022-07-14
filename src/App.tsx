@@ -20,7 +20,7 @@ class  App extends React.Component<{}, State> {
   }
 
   handleCurrencyChange(value: string) {
-    this.setState({ selectedCurrency: value});
+    this.setState({ selectedCurrency: value });
   }
 
   render() {
