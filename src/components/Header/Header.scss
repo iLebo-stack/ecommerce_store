@@ -30,6 +30,10 @@
   }
 }
 
+.logo {
+  cursor: pointer;
+}
+
 .cart {
   position: relative;
 
@@ -57,5 +61,20 @@
   &__image {
     cursor: pointer;
   }
+}
+
+.numberOfItemsInTheBag {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: -50%;
+  right: -50%;
+  position: absolute;
+  background-color: #1d1f22;
+  border-radius: 50%;
+  color: #fff;
+  width: 20px;
+  height: 20px;
+  z-index: -1;
 }
 

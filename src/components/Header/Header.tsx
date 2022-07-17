@@ -10,6 +10,7 @@ interface Props {
   selectedCurrency: string;
   handleToggleCartOvarlay: () => void;
   handleHidePdp: () => void;
+  productsInTheBag: Product[];
 }
 
 export class Header extends React.Component<Props, {}> {
@@ -19,7 +20,10 @@ export class Header extends React.Component<Props, {}> {
       selectedCurrency,
       handleToggleCartOvarlay,
       handleHidePdp,
+      productsInTheBag,
     } = this.props;
+
+    const numberOfCartItems = productsInTheBag.reduce((a, b) => a + b.quantityInCart, 0);
 
     return (
       <header className="header">
@@ -60,6 +64,11 @@ export class Header extends React.Component<Props, {}> {
             onClick={handleToggleCartOvarlay}
           >
             <img src={cartIcon} alt="" className="cart__image" />
+            {Boolean(numberOfCartItems) && (
+              <div className="numberOfItemsInTheBag">
+                {numberOfCartItems}
+              </div>
+            )}
           </div>
         </div>
       </header>

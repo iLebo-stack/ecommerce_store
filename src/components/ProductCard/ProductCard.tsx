@@ -6,6 +6,7 @@ interface Props {
   selectedCurrency: string;
   handleClickedProduct: (product: Product) => void;
   handleShowPdp: (clickedProduct: Product) => void;
+  handleAddProductsInTheBag: (newProduct: Product) => void;
 }
 
 export class ProductCard extends React.Component<Props, {}> { 
@@ -15,6 +16,7 @@ export class ProductCard extends React.Component<Props, {}> {
       product,
       handleClickedProduct,
       handleShowPdp,
+      handleAddProductsInTheBag,
     } = this.props;
 
     const {
@@ -37,7 +39,7 @@ export class ProductCard extends React.Component<Props, {}> {
           type="button"
           className="products__card-button"
           onClick={() => {
-            handleClickedProduct(product);
+            handleAddProductsInTheBag(product);
           }}
         >
           {false}

@@ -10,6 +10,7 @@ interface Props {
   selectedSize: string;  
   selectSizeHandle: (newSelectedSize: string) => void;
   selectColorHandle: (newSelectedColor: string) => void;
+  handleAddProductsInTheBag: (newProduct: Product) => void;
 }
 
 export class Pdp extends React.Component<Props, {}> {
@@ -22,6 +23,7 @@ export class Pdp extends React.Component<Props, {}> {
       selectedSize,
       selectColorHandle,
       selectSizeHandle,
+      handleAddProductsInTheBag,
     } = this.props;
 
     return (
@@ -111,13 +113,7 @@ export class Pdp extends React.Component<Props, {}> {
               className="product_preview__button"
               type="button"
               onClick={() => {
-                if (product.quantityInStock > 0) {
-
-                  product.quantityInStock--;
-                  product.quantityInCart++;
-
-                  selectProductHandle(product);
-                }
+                handleAddProductsInTheBag(product);
               }}
             >
               ADD TO CART

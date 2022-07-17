@@ -13,6 +13,7 @@ interface Props {
   selectColorHandle: (newSelectedColor: string) => void;
   clickedProduct: Product | null;
   handleShowPdp: (clickedProduct: Product) => void;
+  handleAddProductsInTheBag: (newProduct: Product) => void;
 }
 
 interface State {
@@ -50,6 +51,7 @@ export class ProductList extends React.Component<Props, State> {
       selectSizeHandle,
       clickedProduct,
       handleShowPdp,
+      handleAddProductsInTheBag,
     } = this.props;
 
     const { isProductClicked, selectedProduct } = this.state;
@@ -65,6 +67,7 @@ export class ProductList extends React.Component<Props, State> {
               selectedSize={selectedSize}
               selectColorHandle={selectColorHandle}
               selectSizeHandle={selectSizeHandle}
+              handleAddProductsInTheBag={handleAddProductsInTheBag}
             />
         )
         : (
@@ -76,6 +79,7 @@ export class ProductList extends React.Component<Props, State> {
                     selectedCurrency={selectedCurrency}
                     handleClickedProduct={this.handleClickedProduct}
                     handleShowPdp={handleShowPdp}
+                    handleAddProductsInTheBag={handleAddProductsInTheBag}
                   />
                 </React.Fragment>
               ))}

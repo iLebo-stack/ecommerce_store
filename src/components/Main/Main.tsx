@@ -10,6 +10,9 @@ interface Props {
   cartOverlayIsHidden: boolean;
   clickedProduct: Product | null;
   handleShowPdp: (clickedProduct: Product) => void;
+  handleAddProductsInTheBag: (newProduct: Product) => void;
+  handleRemoveProductInTheBag: (tobeRemovedProduct: Product) => void;
+  productsInTheBag: Product[];
 }
 
 interface State {
@@ -82,6 +85,9 @@ export class Main extends React.Component<Props, State> {
       cartOverlayIsHidden,
       clickedProduct,
       handleShowPdp,
+      handleAddProductsInTheBag,
+      handleRemoveProductInTheBag,
+      productsInTheBag,
     } = this.props;
 
     return (
@@ -108,6 +114,9 @@ export class Main extends React.Component<Props, State> {
           handleIncreaseInCartItems={this.handleIncreaseInCartItems}
           handleDecreaseInCartItems={this.handleDecreaseInCartItems}
           cartOverlayIsHidden={cartOverlayIsHidden}
+          handleAddProductsInTheBag={handleAddProductsInTheBag}
+          handleRemoveProductInTheBag={handleRemoveProductInTheBag}
+          productsInTheBag={productsInTheBag}
         />
   
         <ProductList
@@ -120,6 +129,7 @@ export class Main extends React.Component<Props, State> {
           selectSizeHandle={this.selectSizeHandle}
           clickedProduct={clickedProduct}
           handleShowPdp={handleShowPdp}
+          handleAddProductsInTheBag={handleAddProductsInTheBag}
         />
       </main>
     )

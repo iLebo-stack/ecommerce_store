@@ -13,6 +13,9 @@ interface Props {
   handleDecreaseInCartItems: () => void;
   handleIncreaseInCartItems: () => void;
   cartOverlayIsHidden: boolean;
+  handleAddProductsInTheBag: (newProduct: Product) => void;
+  handleRemoveProductInTheBag: (tobeRemovedProduct: Product) => void;
+  productsInTheBag: Product[];
 }
 
 export class CartOverly extends React.Component<Props, {}> {
@@ -23,27 +26,27 @@ export class CartOverly extends React.Component<Props, {}> {
       selectedSize,
       selectSizeHandle,
       selectColorHandle,
-      selectProductHandle,
-      numberOfItemsInBag,
-      handleDecreaseInCartItems,
-      handleIncreaseInCartItems,
       cartOverlayIsHidden,
+      handleAddProductsInTheBag,
+      handleRemoveProductInTheBag,
+      productsInTheBag,
     } = this.props;
 
-    const displayedProducts = selectedProducts
+    const displayedProducts = productsInTheBag
       .filter((selectedProduct, i, array) => array.lastIndexOf(selectedProduct) === i)
       .slice(0, 2);
   
     return (
       <section className={
-        cn(
-          'cart_overlay',
-          { 'cart_overlay--hidden': cartOverlayIsHidden}
-        )
-      }>
+          cn(
+            'cart_overlay',
+            { 'cart_overlay--hidden': cartOverlayIsHidden}
+          )
+        }
+      >
         <h2 className="cart_overlay__title">
           My Bag
-          {numberOfItemsInBag > 0 && `${numberOfItemsInBag}, items`}
+          {`${productsInTheBag.reduce((a, b) => a + b.quantityInCart, 0)}, items`}
         </h2>
 
         {displayedProducts.map( displayedProduct => (
@@ -107,13 +110,7 @@ export class CartOverly extends React.Component<Props, {}> {
                   type="button"
                   className="item__quantity-button"
                   onClick={() => {
-                    if (displayedProduct.quantityInStock > 0) {
-                      displayedProduct.quantityInStock--;
-                      displayedProduct.quantityInCart++;
-                      handleIncreaseInCartItems();
-
-                      selectProductHandle(displayedProduct);
-                    }
+                    handleAddProductsInTheBag(displayedProduct);
                   }}
                 >
                   +
@@ -125,11 +122,7 @@ export class CartOverly extends React.Component<Props, {}> {
                   type="button"
                   className="item__quantity-button"
                   onClick={() => {
-                    if (displayedProduct.quantityInCart > 0) {
-                      displayedProduct.quantityInStock++;
-                      displayedProduct.quantityInCart--;
-                      handleDecreaseInCartItems();
-                    }
+                    handleRemoveProductInTheBag(displayedProduct);
                   }}
                 >
                   -
