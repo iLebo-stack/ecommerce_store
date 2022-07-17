@@ -11,6 +11,8 @@ interface Props {
   selectedColor: string;
   selectSizeHandle: (newSelectedSize: string) => void;
   selectColorHandle: (newSelectedColor: string) => void;
+  clickedProduct: Product | null;
+  handleShowPdp: (clickedProduct: Product) => void;
 }
 
 interface State {
@@ -46,14 +48,17 @@ export class ProductList extends React.Component<Props, State> {
       selectedSize,
       selectColorHandle,
       selectSizeHandle,
+      clickedProduct,
+      handleShowPdp,
     } = this.props;
+
     const { isProductClicked, selectedProduct } = this.state;
 
     return (
-      isProductClicked
+      Boolean(clickedProduct)
         ? (
             <Pdp
-              product={selectedProduct}
+              product={clickedProduct}
               selectedCurrency={selectedCurrency}
               selectProductHandle={selectProductHandle}
               selectedColor={selectedColor}
@@ -70,6 +75,7 @@ export class ProductList extends React.Component<Props, State> {
                     product={product}
                     selectedCurrency={selectedCurrency}
                     handleClickedProduct={this.handleClickedProduct}
+                    handleShowPdp={handleShowPdp}
                   />
                 </React.Fragment>
               ))}

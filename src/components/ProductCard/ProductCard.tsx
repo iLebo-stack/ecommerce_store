@@ -5,6 +5,7 @@ interface Props {
   product: Product;
   selectedCurrency: string;
   handleClickedProduct: (product: Product) => void;
+  handleShowPdp: (clickedProduct: Product) => void;
 }
 
 export class ProductCard extends React.Component<Props, {}> { 
@@ -13,11 +14,22 @@ export class ProductCard extends React.Component<Props, {}> {
       selectedCurrency,
       product,
       handleClickedProduct,
+      handleShowPdp,
     } = this.props;
-    const { image, name, price } = product;
+
+    const {
+      image,
+      name,
+      price,
+    } = product;
 
     return (
-      <article className="products__card">
+      <article
+        className="products__card"
+        onClick={() => {
+          handleShowPdp(product);
+        }}
+      >
         <img src={image} alt={name} className="products__card-image" />
         <p className="products__card-label">{name}</p>
         <p className="products__card-price">{`${selectedCurrency} ${price.toFixed(2)}`}</p>

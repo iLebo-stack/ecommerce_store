@@ -13,7 +13,6 @@ interface Props {
 }
 
 export class Pdp extends React.Component<Props, {}> {
-
   render() {
     const {
       product,
@@ -112,7 +111,13 @@ export class Pdp extends React.Component<Props, {}> {
               className="product_preview__button"
               type="button"
               onClick={() => {
-                selectProductHandle(product);
+                if (product.quantityInStock > 0) {
+
+                  product.quantityInStock--;
+                  product.quantityInCart++;
+
+                  selectProductHandle(product);
+                }
               }}
             >
               ADD TO CART

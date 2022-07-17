@@ -8,11 +8,18 @@ import './Header.scss';
 interface Props {
   handleCurrencyChange: (value: string) => void;
   selectedCurrency: string;
+  handleToggleCartOvarlay: () => void;
+  handleHidePdp: () => void;
 }
 
 export class Header extends React.Component<Props, {}> {
   render() {
-    const { handleCurrencyChange, selectedCurrency } = this.props;
+    const {
+      handleCurrencyChange,
+      selectedCurrency,
+      handleToggleCartOvarlay,
+      handleHidePdp,
+    } = this.props;
 
     return (
       <header className="header">
@@ -20,7 +27,10 @@ export class Header extends React.Component<Props, {}> {
           <Tabs />
         </nav>
   
-        <div className="logo">
+        <div
+          className="logo"
+          onClick={handleHidePdp}
+        >
           <img src={shoppingBag} alt="" className="logo__image" />
         </div>
   
@@ -45,7 +55,10 @@ export class Header extends React.Component<Props, {}> {
             </select>
           </div>
           
-          <div className="cart">
+          <div
+            className="cart"
+            onClick={handleToggleCartOvarlay}
+          >
             <img src={cartIcon} alt="" className="cart__image" />
           </div>
         </div>

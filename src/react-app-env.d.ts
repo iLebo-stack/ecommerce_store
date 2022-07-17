@@ -19,4 +19,6 @@ interface Product {
   description: string;
   colors: string[];
   sizes: string[];
+  quantityInStock: number;
+  quantityInCart: number;
 }

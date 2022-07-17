@@ -1,3 +1,6 @@
+$c-black: #1d1f22;
+$c-green: #5ece7b;
+
 .item {
   &__title,
   &__description {
@@ -32,7 +35,7 @@
 
   &__size-button {
     background-color: #fff;
-    border: 1px solid #1d1f22;
+    border: 1px solid $c-black;
     font-weight: 400;
     font-size: 14px;
     line-height: 160%;
@@ -44,7 +47,7 @@
     cursor: pointer;
 
     &--selected {
-      background-color: #1d1f22;
+      background-color: $c-black;
       color: #fff;
     }
   }
@@ -55,7 +58,7 @@
     cursor: pointer;
 
     &--selected {
-      border: 1px solid #5ece7b;
+      border: 1px solid $c-green;
     }
   }
 
@@ -75,5 +78,43 @@
     font-weight: 500;
     font-size: 16px;
     line-height: 160%;
+  }
+}
+
+.cart_overlay {
+  position: absolute;
+  top: 78px;
+  right: 72px;
+  width: 325px;
+  padding: 32px 16px;
+
+  &--hidden {
+    display: none;
+  }
+}
+
+.cart-overlay-controls {
+  display: flex;
+  column-gap: 12px;
+
+  &__view-bag-button {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 120%;
+    color: $c-black;
+    width: 140px;
+    height: 43px;
+    background: #fff;
+    border: 1px solid $c-black;
+  }
+
+  &__check-out-button {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 120%;
+    color: #fff;
+    width: 140px;
+    height: 43px;
+    background: $c-green;
   }
 }

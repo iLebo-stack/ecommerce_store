@@ -1,4 +1,5 @@
 import React from 'react';
+import cn from 'classnames';
 import { products } from '../../mock_apis/products';
 import { CartOverly } from '../CartOverlay/CartOverlay';
 import { ProductList } from '../ProductList/ProductList';
@@ -6,6 +7,9 @@ import './Main.scss';
 
 interface Props {
   selectedCurrency: string;
+  cartOverlayIsHidden: boolean;
+  clickedProduct: Product | null;
+  handleShowPdp: (clickedProduct: Product) => void;
 }
 
 interface State {
@@ -13,6 +17,7 @@ interface State {
   selectedProducts: Product[];
   selectedColor: string;
   selectedSize: string;
+  numberOfItemsInBag: number;
 }
 
 export class Main extends React.Component<Props, State> {
@@ -21,6 +26,7 @@ export class Main extends React.Component<Props, State> {
     selectedProducts: [],
     selectedColor: '',
     selectedSize: 'S',
+    numberOfItemsInBag: 0,
   }
   
   constructor(props: Props | Readonly<Props>) {
@@ -29,6 +35,8 @@ export class Main extends React.Component<Props, State> {
     this.selectProductHandle = this.selectProductHandle.bind(this);
     this.selectColorHandle = this.selectColorHandle.bind(this);
     this.selectSizeHandle = this.selectSizeHandle.bind(this);
+    this.handleDecreaseInCartItems = this.handleDecreaseInCartItems.bind(this);
+    this.handleIncreaseInCartItems = this.handleIncreaseInCartItems.bind(this);
   }
 
   selectColorHandle = (newSelectedColor: string) => {
@@ -46,17 +54,48 @@ export class Main extends React.Component<Props, State> {
     }));
   }
 
+  handleIncreaseInCartItems = () => {
+    this.setState(prevState => ({
+      ...prevState,
+      numberOfItemsInBag: prevState.numberOfItemsInBag + 1,
+    }))
+  }
+
+  handleDecreaseInCartItems = () => {
+    this.setState(prevState => ({
+      ...prevState,
+      numberOfItemsInBag: prevState.numberOfItemsInBag - 1,
+    }))
+  }
+
   render() {
     const {
       products,
       selectedProducts,
       selectedColor,
       selectedSize,
+      numberOfItemsInBag,
     } = this.state;
+
+    const {
+      selectedCurrency,
+      cartOverlayIsHidden,
+      clickedProduct,
+      handleShowPdp,
+    } = this.props;
 
     return (
       <main>
-        <h1 className="title">Category name</h1>
+        <h1
+          className={
+            cn(
+              'title',
+              { 'title--hidden': Boolean(clickedProduct)}
+            )
+          }
+        >
+          Category name
+        </h1>
 
         <CartOverly
           selectedProducts={selectedProducts}
@@ -64,16 +103,23 @@ export class Main extends React.Component<Props, State> {
           selectedSize={selectedSize}
           selectColorHandle={this.selectColorHandle}
           selectSizeHandle={this.selectSizeHandle}
+          selectProductHandle={this.selectProductHandle}
+          numberOfItemsInBag={numberOfItemsInBag}
+          handleIncreaseInCartItems={this.handleIncreaseInCartItems}
+          handleDecreaseInCartItems={this.handleDecreaseInCartItems}
+          cartOverlayIsHidden={cartOverlayIsHidden}
         />
   
         <ProductList
-          selectedCurrency={this.props.selectedCurrency}
+          selectedCurrency={selectedCurrency}
           product={products}
           selectProductHandle={this.selectProductHandle}
           selectedColor={selectedColor}
           selectedSize={selectedSize}
           selectColorHandle={this.selectColorHandle}
           selectSizeHandle={this.selectSizeHandle}
+          clickedProduct={clickedProduct}
+          handleShowPdp={handleShowPdp}
         />
       </main>
     )

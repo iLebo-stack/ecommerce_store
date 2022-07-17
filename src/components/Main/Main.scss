@@ -2,5 +2,8 @@
   font-weight: 400;
   font-size: 42px;
   line-height: 160%;
-  margin-top: 80px;
+
+  &--hidden {
+    display: none;
+  }
 }
