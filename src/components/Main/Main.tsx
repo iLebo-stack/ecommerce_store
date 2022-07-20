@@ -1,7 +1,7 @@
 import React from 'react';
 import cn from 'classnames';
 import { products } from '../../mock_apis/products';
-import { Cart } from '../CartOverlay/Cart';
+import { Cart } from '../CartModal/CartModal';
 import { ProductList } from '../ProductList/ProductList';
 import './Main.scss';
 
@@ -68,6 +68,7 @@ export class Main extends React.Component<Props, State> {
             productsInTheBag={productsInTheBag}
             handleSelectSize={handleSelectSize}
             handleSelectColor={handleSelectColor}
+            selectedCurrency={selectedCurrency}
           />
         </div>
 

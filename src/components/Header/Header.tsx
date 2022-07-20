@@ -60,10 +60,10 @@ export class Header extends React.Component<Props, {}> {
           </div>
           
           <div
-            className="cart"
+            className="cart-logo"
             onClick={handleToggleCartOvarlay}
           >
-            <img src={cartIcon} alt="" className="cart__image" />
+            <img src={cartIcon} alt="" className="cart-logo__image" />
             {Boolean(numberOfCartItems) && (
               <div className="numberOfItemsInTheBag">
                 {numberOfCartItems}
