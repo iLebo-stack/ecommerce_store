@@ -6,55 +6,24 @@ import { Pdp } from '../Pdp/Pdp';
 interface Props {
   selectedCurrency: string;
   product: Product[];
-  selectProductHandle: (newProduct: Product) => void;
-  selectedSize: string;
-  selectedColor: string;
-  selectSizeHandle: (newSelectedSize: string) => void;
-  selectColorHandle: (newSelectedColor: string) => void;
   clickedProduct: Product | null;
   handleShowPdp: (clickedProduct: Product) => void;
   handleAddProductsInTheBag: (newProduct: Product) => void;
+  handleSelectSize: (productToChangeSize: Product, newSize: string) => void;
+  handleSelectColor: (productToChangeColor: Product, newSize: string) => void;
 }
 
-interface State {
-  isProductClicked: boolean;
-  selectedProduct: Product | null;
-}
-
-export class ProductList extends React.Component<Props, State> {
-  state = {
-    isProductClicked: false,
-    selectedProduct: null,
-  }
-
-  constructor(props: Props | Readonly<Props>) {
-    super(props)
-
-    this.handleClickedProduct = this.handleClickedProduct.bind(this);
-  }
-
-  handleClickedProduct(selectedProduct: Product) {
-    this.setState({
-      isProductClicked: true,
-      selectedProduct,
-    });
-  }
-
+export class ProductList extends React.Component<Props, {}> {
   render() {
     const {
       selectedCurrency,
       product,
-      selectProductHandle,
-      selectedColor,
-      selectedSize,
-      selectColorHandle,
-      selectSizeHandle,
       clickedProduct,
       handleShowPdp,
       handleAddProductsInTheBag,
+      handleSelectSize,
+      handleSelectColor,
     } = this.props;
-
-    const { isProductClicked, selectedProduct } = this.state;
 
     return (
       Boolean(clickedProduct)
@@ -62,12 +31,9 @@ export class ProductList extends React.Component<Props, State> {
             <Pdp
               product={clickedProduct}
               selectedCurrency={selectedCurrency}
-              selectProductHandle={selectProductHandle}
-              selectedColor={selectedColor}
-              selectedSize={selectedSize}
-              selectColorHandle={selectColorHandle}
-              selectSizeHandle={selectSizeHandle}
               handleAddProductsInTheBag={handleAddProductsInTheBag}
+              handleSelectSize={handleSelectSize}
+              handleSelectColor={handleSelectColor}
             />
         )
         : (
@@ -77,7 +43,6 @@ export class ProductList extends React.Component<Props, State> {
                   <ProductCard 
                     product={product}
                     selectedCurrency={selectedCurrency}
-                    handleClickedProduct={this.handleClickedProduct}
                     handleShowPdp={handleShowPdp}
                     handleAddProductsInTheBag={handleAddProductsInTheBag}
                   />

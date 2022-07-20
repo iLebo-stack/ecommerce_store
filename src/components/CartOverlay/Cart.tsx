@@ -1,35 +1,23 @@
 import React from 'react';
 import cn from 'classnames';
-import './CartOverlay.scss';
+import './Cart.scss';
 
 interface Props {
-  selectedProducts: Product[];
-  selectedColor: string;
-  selectedSize: string;
-  selectSizeHandle: (newSelectedSize: string) => void;
-  selectColorHandle: (newSelectedColor: string) => void;
-  selectProductHandle: (newProduct: Product) => void;
-  numberOfItemsInBag: number;
-  handleDecreaseInCartItems: () => void;
-  handleIncreaseInCartItems: () => void;
-  cartOverlayIsHidden: boolean;
   handleAddProductsInTheBag: (newProduct: Product) => void;
   handleRemoveProductInTheBag: (tobeRemovedProduct: Product) => void;
   productsInTheBag: Product[];
+  handleSelectSize: (productToChangeSize: Product, newSize: string) => void;
+  handleSelectColor: (productToChangeColor: Product, newSize: string) => void;
 }
 
-export class CartOverly extends React.Component<Props, {}> {
+export class Cart extends React.Component<Props, {}> {
   render() {
     const {
-      selectedProducts,
-      selectedColor,
-      selectedSize,
-      selectSizeHandle,
-      selectColorHandle,
-      cartOverlayIsHidden,
       handleAddProductsInTheBag,
       handleRemoveProductInTheBag,
       productsInTheBag,
+      handleSelectSize,
+      handleSelectColor,
     } = this.props;
 
     const displayedProducts = productsInTheBag
@@ -37,12 +25,7 @@ export class CartOverly extends React.Component<Props, {}> {
       .slice(0, 2);
   
     return (
-      <section className={
-          cn(
-            'cart_overlay',
-            { 'cart_overlay--hidden': cartOverlayIsHidden}
-          )
-        }
+      <section className="cart_overlay"
       >
         <h2 className="cart_overlay__title">
           My Bag
@@ -64,16 +47,16 @@ export class CartOverly extends React.Component<Props, {}> {
                 <div className="item__size-buttons">
                   {displayedProduct.sizes.map(sizeSelector => (
                     <button
-                      key={displayedProduct.id}
+                      key={sizeSelector}
                       type="button"
                       className={
                         cn(
                           'item__size-button',
-                          { 'item__size-button--selected': sizeSelector === selectedSize},
+                          { 'item__size-button--selected': sizeSelector === displayedProduct.selectedSize},
                         )
                       }
                       onClick={() => {
-                        selectSizeHandle(sizeSelector);
+                        handleSelectSize(displayedProduct, sizeSelector)
                       }}
                     >
                       {sizeSelector}
@@ -90,15 +73,15 @@ export class CartOverly extends React.Component<Props, {}> {
                     <button
                       type="button"
                       style={{ backgroundColor: colorSelector }}
-                      key={displayedProduct.id}
+                      key={colorSelector}
                       className={
                         cn(
                           'item__color-button',
-                          { 'item__color-button--selected': colorSelector === selectedColor }
+                          { 'item__color-button--selected': colorSelector === displayedProduct.selectedColor }
                         )
                       }
                       onClick={() => {
-                        selectColorHandle(colorSelector);
+                        handleSelectColor(displayedProduct, colorSelector)
                       }}
                     />
                   ))}

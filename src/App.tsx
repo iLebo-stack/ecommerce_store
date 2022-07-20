@@ -1,6 +1,7 @@
 import React from 'react';
 import './index_styles/reset.scss';
 import './index_styles/normalize.scss';
+import './App.scss';
 import { Header } from './components/Header/Header';
 import { Main } from './components/Main/Main';
 
@@ -28,6 +29,8 @@ class  App extends React.Component<{}, State> {
     this.handleHidePdp = this.handleHidePdp.bind(this);
     this.handleAddProductsInTheBag = this.handleAddProductsInTheBag.bind(this);
     this.handleRemoveProductInTheBag = this.handleRemoveProductInTheBag.bind(this);
+    this.handleSelectColor = this.handleSelectColor.bind(this);
+    this.handleSelectSize = this.handleSelectSize.bind(this);
   }
 
   handleCurrencyChange(value: string) {
@@ -113,6 +116,56 @@ class  App extends React.Component<{}, State> {
     }
   }
 
+  handleSelectColor(productToChangeColor: Product, newColor: string) {
+    this.setState(prevState => ({
+      ...prevState,
+      productsInTheBag: prevState.productsInTheBag.map(product => {
+        if (product.id === productToChangeColor.id) {
+          return {
+            ...product,
+            selectedColor: newColor,
+          }
+        }
+
+        return product;
+      })
+    }))
+
+    if (this.state.clickedProduct) {
+      this.setState({
+        clickedProduct: {
+          ...productToChangeColor,
+          selectedColor: newColor,
+        }
+      })
+    }
+  }
+
+  handleSelectSize(productToChangeSize: Product, newSize: string) {
+    this.setState(prevState => ({
+      ...prevState,
+      productsInTheBag: prevState.productsInTheBag.map(product => {
+        if (product.id === productToChangeSize.id) {
+          return {
+            ...product,
+            selectedSize: newSize,
+          }
+        }
+
+        return product;
+      })
+    }))
+
+    if (this.state.clickedProduct) {
+      this.setState({
+        clickedProduct: {
+          ...productToChangeSize,
+          selectedSize: newSize,
+        }
+      })
+    }
+  }
+
   render() {
     const {
       selectedCurrency,
@@ -120,8 +173,6 @@ class  App extends React.Component<{}, State> {
       clickedProduct,
       productsInTheBag,
     } = this.state;
-
-    console.log(this.state.productsInTheBag);
 
     return (
       <div className="App">
@@ -141,6 +192,8 @@ class  App extends React.Component<{}, State> {
           handleAddProductsInTheBag={this.handleAddProductsInTheBag}
           handleRemoveProductInTheBag={this.handleRemoveProductInTheBag}
           productsInTheBag={productsInTheBag}
+          handleSelectSize={this.handleSelectSize}
+          handleSelectColor={this.handleSelectColor}
         />
       </div>
     );

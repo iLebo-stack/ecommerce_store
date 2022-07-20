@@ -1,7 +1,7 @@
 import React from 'react';
 import cn from 'classnames';
 import { products } from '../../mock_apis/products';
-import { CartOverly } from '../CartOverlay/CartOverlay';
+import { Cart } from '../CartOverlay/Cart';
 import { ProductList } from '../ProductList/ProductList';
 import './Main.scss';
 
@@ -13,71 +13,22 @@ interface Props {
   handleAddProductsInTheBag: (newProduct: Product) => void;
   handleRemoveProductInTheBag: (tobeRemovedProduct: Product) => void;
   productsInTheBag: Product[];
+  handleSelectSize: (productToChangeSize: Product, newSize: string) => void;
+  handleSelectColor: (productToChangeColor: Product, newSize: string) => void;
 }
 
 interface State {
   products: Product[];
-  selectedProducts: Product[];
-  selectedColor: string;
-  selectedSize: string;
-  numberOfItemsInBag: number;
 }
 
 export class Main extends React.Component<Props, State> {
   state = {
     products,
-    selectedProducts: [],
-    selectedColor: '',
-    selectedSize: 'S',
-    numberOfItemsInBag: 0,
-  }
-  
-  constructor(props: Props | Readonly<Props>) {
-    super(props)
-
-    this.selectProductHandle = this.selectProductHandle.bind(this);
-    this.selectColorHandle = this.selectColorHandle.bind(this);
-    this.selectSizeHandle = this.selectSizeHandle.bind(this);
-    this.handleDecreaseInCartItems = this.handleDecreaseInCartItems.bind(this);
-    this.handleIncreaseInCartItems = this.handleIncreaseInCartItems.bind(this);
-  }
-
-  selectColorHandle = (newSelectedColor: string) => {
-    this.setState({ selectedColor: newSelectedColor })
-  }
-
-  selectSizeHandle = (newSelectedSize: string) => {
-    this.setState({ selectedSize: newSelectedSize })
-  }
-
-  selectProductHandle(newProduct: Product) {
-    this.setState(prevState => ({
-      ...prevState,
-      selectedProducts: [...prevState.selectedProducts, newProduct],
-    }));
-  }
-
-  handleIncreaseInCartItems = () => {
-    this.setState(prevState => ({
-      ...prevState,
-      numberOfItemsInBag: prevState.numberOfItemsInBag + 1,
-    }))
-  }
-
-  handleDecreaseInCartItems = () => {
-    this.setState(prevState => ({
-      ...prevState,
-      numberOfItemsInBag: prevState.numberOfItemsInBag - 1,
-    }))
   }
 
   render() {
     const {
       products,
-      selectedProducts,
-      selectedColor,
-      selectedSize,
-      numberOfItemsInBag,
     } = this.state;
 
     const {
@@ -88,6 +39,8 @@ export class Main extends React.Component<Props, State> {
       handleAddProductsInTheBag,
       handleRemoveProductInTheBag,
       productsInTheBag,
+      handleSelectSize,
+      handleSelectColor,
     } = this.props;
 
     return (
@@ -103,33 +56,29 @@ export class Main extends React.Component<Props, State> {
           Category name
         </h1>
 
-        <CartOverly
-          selectedProducts={selectedProducts}
-          selectedColor={selectedColor}
-          selectedSize={selectedSize}
-          selectColorHandle={this.selectColorHandle}
-          selectSizeHandle={this.selectSizeHandle}
-          selectProductHandle={this.selectProductHandle}
-          numberOfItemsInBag={numberOfItemsInBag}
-          handleIncreaseInCartItems={this.handleIncreaseInCartItems}
-          handleDecreaseInCartItems={this.handleDecreaseInCartItems}
-          cartOverlayIsHidden={cartOverlayIsHidden}
-          handleAddProductsInTheBag={handleAddProductsInTheBag}
-          handleRemoveProductInTheBag={handleRemoveProductInTheBag}
-          productsInTheBag={productsInTheBag}
-        />
-  
+        <div className={
+          cn(
+            'cart-overlay',
+            { 'cart-overlay--hidden' : cartOverlayIsHidden}
+          )
+        }>
+          <Cart
+            handleAddProductsInTheBag={handleAddProductsInTheBag}
+            handleRemoveProductInTheBag={handleRemoveProductInTheBag}
+            productsInTheBag={productsInTheBag}
+            handleSelectSize={handleSelectSize}
+            handleSelectColor={handleSelectColor}
+          />
+        </div>
+
         <ProductList
           selectedCurrency={selectedCurrency}
           product={products}
-          selectProductHandle={this.selectProductHandle}
-          selectedColor={selectedColor}
-          selectedSize={selectedSize}
-          selectColorHandle={this.selectColorHandle}
-          selectSizeHandle={this.selectSizeHandle}
           clickedProduct={clickedProduct}
           handleShowPdp={handleShowPdp}
           handleAddProductsInTheBag={handleAddProductsInTheBag}
+          handleSelectSize={handleSelectSize}
+          handleSelectColor={handleSelectColor}
         />
       </main>
     )

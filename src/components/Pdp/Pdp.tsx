@@ -5,12 +5,9 @@ import './Pdp.scss';
 interface Props {
   product: Product | null;
   selectedCurrency: string;
-  selectProductHandle: (newProduct: Product) => void;
-  selectedColor: string;
-  selectedSize: string;  
-  selectSizeHandle: (newSelectedSize: string) => void;
-  selectColorHandle: (newSelectedColor: string) => void;
   handleAddProductsInTheBag: (newProduct: Product) => void;
+  handleSelectSize: (productToChangeSize: Product, newSize: string) => void;
+  handleSelectColor: (productToChangeColor: Product, newSize: string) => void;
 }
 
 export class Pdp extends React.Component<Props, {}> {
@@ -18,12 +15,9 @@ export class Pdp extends React.Component<Props, {}> {
     const {
       product,
       selectedCurrency,
-      selectProductHandle,
-      selectedColor,
-      selectedSize,
-      selectColorHandle,
-      selectSizeHandle,
       handleAddProductsInTheBag,
+      handleSelectSize,
+      handleSelectColor,
     } = this.props;
 
     return (
@@ -69,11 +63,11 @@ export class Pdp extends React.Component<Props, {}> {
                     key={sizeSelector}
                     type="button"
                     onClick={() => {
-                      selectSizeHandle(sizeSelector);
+                      handleSelectSize(product, sizeSelector)
                     }}
                     className={cn(
                       'product_preview__size_button',
-                      { 'product_preview__size_button--selected': selectedSize === sizeSelector }
+                      { 'product_preview__size_button--selected': product.selectedSize === sizeSelector }
                     )}
                   >
                     {sizeSelector}
@@ -92,11 +86,11 @@ export class Pdp extends React.Component<Props, {}> {
                     type="button"
                     style={ { backgroundColor: colorSelector } }
                     onClick={() => {
-                      selectColorHandle(colorSelector);
+                      handleSelectColor(product, colorSelector)
                     }}
                     className={cn(
                       'product_preview__color_button',
-                      { 'product_preview__color_button--selected': selectedColor === colorSelector },
+                      { 'product_preview__color_button--selected': product.selectedColor === colorSelector },
                     )}
                   >
                   </button>

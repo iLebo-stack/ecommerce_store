@@ -4,7 +4,6 @@ import './ProductCard.scss';
 interface Props {
   product: Product;
   selectedCurrency: string;
-  handleClickedProduct: (product: Product) => void;
   handleShowPdp: (clickedProduct: Product) => void;
   handleAddProductsInTheBag: (newProduct: Product) => void;
 }
@@ -14,7 +13,6 @@ export class ProductCard extends React.Component<Props, {}> {
     const {
       selectedCurrency,
       product,
-      handleClickedProduct,
       handleShowPdp,
       handleAddProductsInTheBag,
     } = this.props;

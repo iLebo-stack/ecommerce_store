@@ -21,4 +21,6 @@ interface Product {
   sizes: string[];
   quantityInStock: number;
   quantityInCart: number;
+  selectedColor: string;
+  selectedSize: string;
 }

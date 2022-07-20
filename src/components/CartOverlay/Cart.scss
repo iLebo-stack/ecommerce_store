@@ -83,14 +83,10 @@ $c-green: #5ece7b;
 
 .cart_overlay {
   position: absolute;
-  top: 78px;
+  background-color: #fff;
+  top: 0;
   right: 72px;
-  width: 325px;
   padding: 32px 16px;
-
-  &--hidden {
-    display: none;
-  }
 }
 
 .cart-overlay-controls {
