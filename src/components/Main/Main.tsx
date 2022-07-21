@@ -1,9 +1,10 @@
 import React from 'react';
 import cn from 'classnames';
 import { products } from '../../mock_apis/products';
-import { Cart } from '../CartModal/CartModal';
+import { CartModal } from '../CartModal/CartModal';
 import { ProductList } from '../ProductList/ProductList';
 import './Main.scss';
+import { Cart } from '../Cart/Cart';
 
 interface Props {
   selectedCurrency: string;
@@ -62,7 +63,7 @@ export class Main extends React.Component<Props, State> {
             { 'cart-overlay--hidden' : cartOverlayIsHidden}
           )
         }>
-          <Cart
+          <CartModal
             handleAddProductsInTheBag={handleAddProductsInTheBag}
             handleRemoveProductInTheBag={handleRemoveProductInTheBag}
             productsInTheBag={productsInTheBag}
@@ -78,6 +79,15 @@ export class Main extends React.Component<Props, State> {
           clickedProduct={clickedProduct}
           handleShowPdp={handleShowPdp}
           handleAddProductsInTheBag={handleAddProductsInTheBag}
+          handleSelectSize={handleSelectSize}
+          handleSelectColor={handleSelectColor}
+        />
+
+        <Cart
+          productsInTheBag={productsInTheBag}
+          selectedCurrency={selectedCurrency}
+          handleAddProductsInTheBag={handleAddProductsInTheBag}
+          handleRemoveProductInTheBag={handleRemoveProductInTheBag}
           handleSelectSize={handleSelectSize}
           handleSelectColor={handleSelectColor}
         />

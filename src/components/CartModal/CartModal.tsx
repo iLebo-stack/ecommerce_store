@@ -11,7 +11,7 @@ interface Props {
   selectedCurrency: string;
 }
 
-export class Cart extends React.Component<Props, {}> {
+export class CartModal extends React.Component<Props, {}> {
   render() {
     const {
       handleAddProductsInTheBag,
