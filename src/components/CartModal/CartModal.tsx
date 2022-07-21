@@ -9,6 +9,7 @@ interface Props {
   handleSelectSize: (productToChangeSize: Product, newSize: string) => void;
   handleSelectColor: (productToChangeColor: Product, newSize: string) => void;
   selectedCurrency: string;
+  handleShowCart: () => void;
 }
 
 export class CartModal extends React.Component<Props, {}> {
@@ -19,7 +20,8 @@ export class CartModal extends React.Component<Props, {}> {
       productsInTheBag,
       handleSelectSize,
       handleSelectColor,
-      selectedCurrency
+      selectedCurrency,
+      handleShowCart,
     } = this.props;
 
     const displayedProducts = productsInTheBag
@@ -139,6 +141,7 @@ export class CartModal extends React.Component<Props, {}> {
           <button
             type="button"
             className="cart-modal-controls__view-bag-button"
+            onClick={handleShowCart}
           >
             VIEW BAG
           </button>

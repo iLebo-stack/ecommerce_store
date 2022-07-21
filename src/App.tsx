@@ -10,6 +10,7 @@ interface State {
   cartOverlayIsHidden: boolean;
   clickedProduct: Product | null;
   productsInTheBag: Product[];
+  isCartHidden: boolean;
 }
 
 class  App extends React.Component<{}, State> {
@@ -18,6 +19,7 @@ class  App extends React.Component<{}, State> {
     cartOverlayIsHidden: true,
     clickedProduct: null,
     productsInTheBag: [],
+    isCartHidden: true,
   }
 
   constructor(props: {} | Readonly<{}>) {
@@ -31,6 +33,9 @@ class  App extends React.Component<{}, State> {
     this.handleRemoveProductInTheBag = this.handleRemoveProductInTheBag.bind(this);
     this.handleSelectColor = this.handleSelectColor.bind(this);
     this.handleSelectSize = this.handleSelectSize.bind(this);
+    this.handleShowCart = this.handleShowCart.bind(this);
+    this.handleHideCart = this.handleHideCart.bind(this);
+    this.handleHideCarOverlay = this.handleHideCarOverlay.bind(this);
   }
 
   handleCurrencyChange(value: string) {
@@ -166,12 +171,25 @@ class  App extends React.Component<{}, State> {
     }
   }
 
+  handleShowCart() {
+    this.setState({ isCartHidden: false });
+  }
+
+  handleHideCart() {
+    this.setState({ isCartHidden: true });
+  }
+
+  handleHideCarOverlay() {
+    this.setState({ cartOverlayIsHidden: true });
+  }
+
   render() {
     const {
       selectedCurrency,
       cartOverlayIsHidden,
       clickedProduct,
       productsInTheBag,
+      isCartHidden,
     } = this.state;
 
     return (
@@ -182,6 +200,8 @@ class  App extends React.Component<{}, State> {
           handleToggleCartOvarlay={this.handleToggleCartOvarlay}
           handleHidePdp={this.handleHidePdp}
           productsInTheBag={productsInTheBag}
+          handleHideCart={this.handleHideCart}
+          handleHideCarOverlay={this.handleHideCarOverlay}
         />
   
         <Main
@@ -194,6 +214,8 @@ class  App extends React.Component<{}, State> {
           productsInTheBag={productsInTheBag}
           handleSelectSize={this.handleSelectSize}
           handleSelectColor={this.handleSelectColor}
+          isCartHidden={isCartHidden}
+          handleShowCart={this.handleShowCart}
         />
       </div>
     );

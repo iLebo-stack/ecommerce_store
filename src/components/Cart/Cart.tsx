@@ -9,6 +9,7 @@ interface Props {
   handleRemoveProductInTheBag: (tobeRemovedProduct: Product) => void;  
   handleSelectSize: (productToChangeSize: Product, newSize: string) => void;
   handleSelectColor: (productToChangeColor: Product, newColor: string) => void;
+  isCartHidden: boolean;
 }
 
 export class Cart extends React.Component<Props, {}>  {
@@ -20,6 +21,7 @@ export class Cart extends React.Component<Props, {}>  {
       handleRemoveProductInTheBag,
       handleSelectColor,
       handleSelectSize,
+      isCartHidden,
     } = this.props;
 
     const totalCost = productsInTheBag.reduce((a, b) => a + (b.price * b.quantityInCart), 0);
@@ -27,7 +29,12 @@ export class Cart extends React.Component<Props, {}>  {
     const tax = 0.21 * totalCost;
 
     return (
-      <section className="cart">
+      <section className={
+        cn(
+          'cart',
+          { 'cart--hidden': isCartHidden },
+        )
+      }>
         <h2 className="cart__title">CART</h2>
 
         <div className="cart__items-wrapper">
@@ -146,7 +153,7 @@ export class Cart extends React.Component<Props, {}>  {
 
         <article className="cart__cost">
           <p className="cart__cost-tax">{`Tax 21%: ${tax.toFixed(2)}`}</p>
-          <p className="cart__cost-quantity">{`Quantity: ${quantity.toFixed(2)}`}</p>
+          <p className="cart__cost-quantity">{`Quantity: ${quantity}`}</p>
           <p className="cart__cost-total">{`Total: ${selectedCurrency}${totalCost.toFixed(2)}`}</p>
         </article>
 

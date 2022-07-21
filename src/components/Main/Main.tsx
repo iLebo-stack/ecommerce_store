@@ -16,6 +16,8 @@ interface Props {
   productsInTheBag: Product[];
   handleSelectSize: (productToChangeSize: Product, newSize: string) => void;
   handleSelectColor: (productToChangeColor: Product, newSize: string) => void;
+  isCartHidden: boolean;
+  handleShowCart: () => void;
 }
 
 interface State {
@@ -42,55 +44,68 @@ export class Main extends React.Component<Props, State> {
       productsInTheBag,
       handleSelectSize,
       handleSelectColor,
+      isCartHidden,
+      handleShowCart,
     } = this.props;
 
     return (
       <main>
-        <h1
-          className={
-            cn(
-              'title',
-              { 'title--hidden': Boolean(clickedProduct)}
-            )
-          }
-        >
-          Category name
-        </h1>
-
-        <div className={
-          cn(
-            'cart-overlay',
-            { 'cart-overlay--hidden' : cartOverlayIsHidden}
+        {isCartHidden
+          ? (
+            <>
+              <h1
+                className={
+                  cn(
+                    'title',
+                    { 'title--hidden': Boolean(clickedProduct)}
+                  )
+                }
+              >
+                Category name
+              </h1>
+      
+              <div
+                className={
+                  cn(
+                    'cart-overlay',
+                    { 'cart-overlay--hidden' : cartOverlayIsHidden}
+                  )
+                }
+              >
+                <CartModal
+                  handleAddProductsInTheBag={handleAddProductsInTheBag}
+                  handleRemoveProductInTheBag={handleRemoveProductInTheBag}
+                  productsInTheBag={productsInTheBag}
+                  handleSelectSize={handleSelectSize}
+                  handleSelectColor={handleSelectColor}
+                  selectedCurrency={selectedCurrency}
+                  handleShowCart={handleShowCart}
+                />
+              </div>
+      
+              <ProductList
+                selectedCurrency={selectedCurrency}
+                product={products}
+                clickedProduct={clickedProduct}
+                handleShowPdp={handleShowPdp}
+                handleAddProductsInTheBag={handleAddProductsInTheBag}
+                handleSelectSize={handleSelectSize}
+                handleSelectColor={handleSelectColor}
+              />
+            </>
           )
-        }>
-          <CartModal
-            handleAddProductsInTheBag={handleAddProductsInTheBag}
-            handleRemoveProductInTheBag={handleRemoveProductInTheBag}
-            productsInTheBag={productsInTheBag}
-            handleSelectSize={handleSelectSize}
-            handleSelectColor={handleSelectColor}
-            selectedCurrency={selectedCurrency}
-          />
-        </div>
+          : (
+            <Cart
+              productsInTheBag={productsInTheBag}
+              selectedCurrency={selectedCurrency}
+              handleAddProductsInTheBag={handleAddProductsInTheBag}
+              handleRemoveProductInTheBag={handleRemoveProductInTheBag}
+              handleSelectSize={handleSelectSize}
+              handleSelectColor={handleSelectColor}
+              isCartHidden={isCartHidden}
+            />   
+          )}
 
-        <ProductList
-          selectedCurrency={selectedCurrency}
-          product={products}
-          clickedProduct={clickedProduct}
-          handleShowPdp={handleShowPdp}
-          handleAddProductsInTheBag={handleAddProductsInTheBag}
-          handleSelectSize={handleSelectSize}
-          handleSelectColor={handleSelectColor}
-        />
-
-        <Cart
-          productsInTheBag={productsInTheBag}
-          selectedCurrency={selectedCurrency}
-          handleAddProductsInTheBag={handleAddProductsInTheBag}
-          handleRemoveProductInTheBag={handleRemoveProductInTheBag}
-          handleSelectSize={handleSelectSize}
-          handleSelectColor={handleSelectColor}
-        />
       </main>
     )
   }

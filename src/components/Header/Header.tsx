@@ -11,6 +11,8 @@ interface Props {
   handleToggleCartOvarlay: () => void;
   handleHidePdp: () => void;
   productsInTheBag: Product[];
+  handleHideCart: () => void;
+  handleHideCarOverlay: () => void;
 }
 
 export class Header extends React.Component<Props, {}> {
@@ -21,6 +23,8 @@ export class Header extends React.Component<Props, {}> {
       handleToggleCartOvarlay,
       handleHidePdp,
       productsInTheBag,
+      handleHideCart,
+      handleHideCarOverlay,
     } = this.props;
 
     const numberOfCartItems = productsInTheBag.reduce((a, b) => a + b.quantityInCart, 0);
@@ -33,7 +37,11 @@ export class Header extends React.Component<Props, {}> {
   
         <div
           className="logo"
-          onClick={handleHidePdp}
+          onClick={() => {
+            handleHidePdp();
+            handleHideCart();
+            handleHideCarOverlay();
+          }}
         >
           <img src={shoppingBag} alt="" className="logo__image" />
         </div>

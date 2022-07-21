@@ -10,6 +10,10 @@ $c-green: #5ece7b;
 .cart {
   margin-bottom: 250px;
 
+  &--hidden {
+    display: none;
+  }
+
   &__title {
     font-weight: 700;
     font-size: 32px;
