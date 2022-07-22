@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/ecommerce_store/static/css/main.5d849cbc.css",
-    "main.js": "/ecommerce_store/static/js/main.375c99c5.js",
+    "main.css": "/ecommerce_store/static/css/main.db535400.css",
+    "main.js": "/ecommerce_store/static/js/main.89ccb2a1.js",
     "static/media/kids-jacket.jpg": "/ecommerce_store/static/media/kids-jacket.455e18b7c21381b93463.jpg",
     "static/media/man-shoes.jpg": "/ecommerce_store/static/media/man-shoes.2be6767718630d4a6154.jpg",
     "static/media/sweater-for-men.png": "/ecommerce_store/static/media/sweater-for-men.24219f39462c690dc2f2.png",
@@ -12,11 +12,13 @@
     "static/media/cart-icon.svg": "/ecommerce_store/static/media/cart-icon.a13d08f9cdd92d18d3a7c1fd354e6b6b.svg",
     "static/media/shopping-bag-icon.svg": "/ecommerce_store/static/media/shopping-bag-icon.72ab068c385688e2b1cee6c80abfc58c.svg",
     "static/media/wheels-cart-icon.svg": "/ecommerce_store/static/media/wheels-cart-icon.84b232316f28ac40efb9.svg",
-    "main.5d849cbc.css.map": "/ecommerce_store/static/css/main.5d849cbc.css.map",
-    "main.375c99c5.js.map": "/ecommerce_store/static/js/main.375c99c5.js.map"
+    "static/media/arrow-bag-symbol.svg": "/ecommerce_store/static/media/arrow-bag-symbol.599dbb857dbf703e14bb.svg",
+    "static/media/bag-symbol.svg": "/ecommerce_store/static/media/bag-symbol.224f4f143849e9f966af.svg",
+    "main.db535400.css.map": "/ecommerce_store/static/css/main.db535400.css.map",
+    "main.89ccb2a1.js.map": "/ecommerce_store/static/js/main.89ccb2a1.js.map"
   },
   "entrypoints": [
-    "static/css/main.5d849cbc.css",
-    "static/js/main.375c99c5.js"
+    "static/css/main.db535400.css",
+    "static/js/main.89ccb2a1.js"
   ]
 }
