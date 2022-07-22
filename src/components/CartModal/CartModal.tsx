@@ -27,14 +27,21 @@ export class CartModal extends React.Component<Props, {}> {
     const displayedProducts = productsInTheBag
       .filter((selectedProduct, i, array) => array.lastIndexOf(selectedProduct) === i)
       .slice(0, 2);
+
+    const totalCartQuantity = productsInTheBag.reduce((a, b) => a + b.quantityInCart, 0);
   
     return (
       <section className="cart-modal"
       >
-        <h2 className="cart-modal__title">
-          My Bag,
-          <span style={{ fontWeight: 400 }}>{` ${productsInTheBag.reduce((a, b) => a + b.quantityInCart, 0)} items`}</span>
-        </h2>
+        {totalCartQuantity === 0
+          ? (
+              <p className='cart-modal__empty'>Your cart is empty</p>
+          )
+          : (
+              <h2 className="cart-modal__title">
+                My Bag,
+                <span style={{ fontWeight: 400 }}>{` ${totalCartQuantity} ${totalCartQuantity === 1 ? 'item' : 'items'}`}</span>
+              </h2>)}
 
         <div className="items-wrapper">
           {displayedProducts.map( displayedProduct => (
@@ -133,7 +140,7 @@ export class CartModal extends React.Component<Props, {}> {
           <p className="item__total-label">Total</p>
 
           <p className="item__total-price">
-            {selectedCurrency + productsInTheBag.reduce((a, b) => a + (b.price * b.quantityInCart), 0)}
+            {selectedCurrency + productsInTheBag.reduce((a, b) => a + (b.price * b.quantityInCart), 0).toFixed(2)}
           </p>
         </article>
 

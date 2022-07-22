@@ -149,6 +149,12 @@ $c-green: #5ece7b;
     margin-bottom: 32px;
   }
 
+  &__empty {
+    color: #33516799;
+    text-align: center;
+    font-size: 24px;
+  }
+
   &-controls {
     display: flex;
     column-gap: 12px;

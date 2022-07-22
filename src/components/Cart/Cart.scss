@@ -14,6 +14,12 @@ $c-green: #5ece7b;
     display: none;
   }
 
+  &__empty {
+    color: #33516799;
+    text-align: center;
+    font-size: 24px;
+  }
+
   &__title {
     font-weight: 700;
     font-size: 32px;
