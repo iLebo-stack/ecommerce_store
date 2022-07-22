@@ -13,6 +13,7 @@ interface Props {
   productsInTheBag: Product[];
   handleHideCart: () => void;
   handleHideCarOverlay: () => void;
+  handleFilterCategoryByActiveTab: (value: string) => void;
 }
 
 export class Header extends React.Component<Props, {}> {
@@ -25,6 +26,7 @@ export class Header extends React.Component<Props, {}> {
       productsInTheBag,
       handleHideCart,
       handleHideCarOverlay,
+      handleFilterCategoryByActiveTab,
     } = this.props;
 
     const numberOfCartItems = productsInTheBag.reduce((a, b) => a + b.quantityInCart, 0);
@@ -32,7 +34,7 @@ export class Header extends React.Component<Props, {}> {
     return (
       <header className="header">
         <nav className="nav">
-          <Tabs />
+          <Tabs handleFilterCategoryByActiveTab={handleFilterCategoryByActiveTab} />
         </nav>
   
         <div

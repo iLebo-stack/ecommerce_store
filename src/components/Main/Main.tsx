@@ -1,6 +1,5 @@
 import React from 'react';
 import cn from 'classnames';
-import { products } from '../../mock_apis/products';
 import { CartModal } from '../CartModal/CartModal';
 import { ProductList } from '../ProductList/ProductList';
 import './Main.scss';
@@ -18,22 +17,11 @@ interface Props {
   handleSelectColor: (productToChangeColor: Product, newSize: string) => void;
   isCartHidden: boolean;
   handleShowCart: () => void;
-}
-
-interface State {
   products: Product[];
 }
 
-export class Main extends React.Component<Props, State> {
-  state = {
-    products,
-  }
-
+export class Main extends React.Component<Props, {}> {
   render() {
-    const {
-      products,
-    } = this.state;
-
     const {
       selectedCurrency,
       cartOverlayIsHidden,
@@ -46,6 +34,7 @@ export class Main extends React.Component<Props, State> {
       handleSelectColor,
       isCartHidden,
       handleShowCart,
+      products,
     } = this.props;
 
     return (

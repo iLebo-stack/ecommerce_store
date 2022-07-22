@@ -2,6 +2,7 @@ import React from 'react';
 import './index_styles/reset.scss';
 import './index_styles/normalize.scss';
 import './App.scss';
+import { products } from './mock_apis/products';
 import { Header } from './components/Header/Header';
 import { Main } from './components/Main/Main';
 
@@ -11,6 +12,7 @@ interface State {
   clickedProduct: Product | null;
   productsInTheBag: Product[];
   isCartHidden: boolean;
+  products: Product[];
 }
 
 class  App extends React.Component<{}, State> {
@@ -20,6 +22,7 @@ class  App extends React.Component<{}, State> {
     clickedProduct: null,
     productsInTheBag: [],
     isCartHidden: true,
+    products,
   }
 
   constructor(props: {} | Readonly<{}>) {
@@ -36,6 +39,7 @@ class  App extends React.Component<{}, State> {
     this.handleShowCart = this.handleShowCart.bind(this);
     this.handleHideCart = this.handleHideCart.bind(this);
     this.handleHideCarOverlay = this.handleHideCarOverlay.bind(this);
+    this.handleFilterCategoryByActiveTab = this.handleFilterCategoryByActiveTab.bind(this);
   }
 
   handleCurrencyChange(value: string) {
@@ -183,6 +187,16 @@ class  App extends React.Component<{}, State> {
     this.setState({ cartOverlayIsHidden: true });
   }
 
+  handleFilterCategoryByActiveTab(value: string = '') {
+    this.setState({ products: products.filter(product => (
+      product.for.toLowerCase() === value.toLowerCase()
+    ))})
+  }
+
+  componentDidMount() {
+    this.handleFilterCategoryByActiveTab('women');
+  }
+
   render() {
     const {
       selectedCurrency,
@@ -190,6 +204,7 @@ class  App extends React.Component<{}, State> {
       clickedProduct,
       productsInTheBag,
       isCartHidden,
+      products,
     } = this.state;
 
     return (
@@ -202,6 +217,7 @@ class  App extends React.Component<{}, State> {
           productsInTheBag={productsInTheBag}
           handleHideCart={this.handleHideCart}
           handleHideCarOverlay={this.handleHideCarOverlay}
+          handleFilterCategoryByActiveTab={this.handleFilterCategoryByActiveTab}
         />
   
         <Main
@@ -216,6 +232,7 @@ class  App extends React.Component<{}, State> {
           handleSelectColor={this.handleSelectColor}
           isCartHidden={isCartHidden}
           handleShowCart={this.handleShowCart}
+          products={products}
         />
       </div>
     );

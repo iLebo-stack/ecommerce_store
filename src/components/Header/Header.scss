@@ -30,7 +30,36 @@
 }
 
 .logo {
+  position: relative;
   cursor: pointer;
+
+  &__image {
+    display: block;
+  }
+  
+  &::before {
+    content: "";
+    position: absolute;
+    background-image: url(../../images/bag-symbol.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    background-image: url(../../images/arrow-bag-symbol.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    top: 0;
+    right: 0;
+    left: 15px;
+    bottom: 12px;
+  }
 }
 
 .cart-logo {
