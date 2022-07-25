@@ -44,7 +44,6 @@ export class ProductList extends React.Component<Props, {}> {
                     product={product}
                     selectedCurrency={selectedCurrency}
                     handleShowPdp={handleShowPdp}
-                    handleAddProductsInTheBag={handleAddProductsInTheBag}
                   />
                 </React.Fragment>
               ))}
