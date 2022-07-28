@@ -2,9 +2,11 @@ import React from 'react';
 import './index_styles/reset.scss';
 import './index_styles/normalize.scss';
 import './App.scss';
+import { tabs } from './mock_apis/navigation-content';
 import { products } from './mock_apis/products';
 import { Header } from './components/Header/Header';
 import { Main } from './components/Main/Main';
+
 
 interface State {
   selectedCurrency: string;
@@ -13,6 +15,7 @@ interface State {
   productsInTheBag: Product[];
   isCartHidden: boolean;
   products: Product[];
+  activeTab: Tab;
 }
 
 class  App extends React.Component<{}, State> {
@@ -23,6 +26,10 @@ class  App extends React.Component<{}, State> {
     productsInTheBag: [],
     isCartHidden: true,
     products,
+    activeTab: {
+      id: 'tab-1',
+      title: 'WOWEN'
+    },
   }
 
   constructor(props: {} | Readonly<{}>) {
@@ -40,6 +47,7 @@ class  App extends React.Component<{}, State> {
     this.handleHideCart = this.handleHideCart.bind(this);
     this.handleHideCarOverlay = this.handleHideCarOverlay.bind(this);
     this.handleFilterCategoryByActiveTab = this.handleFilterCategoryByActiveTab.bind(this);
+    this.handleSelectActiveTab = this.handleSelectActiveTab.bind(this);
   }
 
   handleCurrencyChange(value: string) {
@@ -197,6 +205,10 @@ class  App extends React.Component<{}, State> {
     this.handleFilterCategoryByActiveTab('women');
   }
 
+  handleSelectActiveTab(tab: Tab) {
+    this.setState({ activeTab: tab });
+  }
+
   render() {
     const {
       selectedCurrency,
@@ -205,6 +217,7 @@ class  App extends React.Component<{}, State> {
       productsInTheBag,
       isCartHidden,
       products,
+      activeTab,
     } = this.state;
 
     return (
@@ -218,6 +231,8 @@ class  App extends React.Component<{}, State> {
           handleHideCart={this.handleHideCart}
           handleHideCarOverlay={this.handleHideCarOverlay}
           handleFilterCategoryByActiveTab={this.handleFilterCategoryByActiveTab}
+          activeTab={activeTab}
+          handleSelectActiveTab={this.handleSelectActiveTab}
         />
   
         <Main
@@ -233,6 +248,8 @@ class  App extends React.Component<{}, State> {
           isCartHidden={isCartHidden}
           handleShowCart={this.handleShowCart}
           products={products}
+          handleHideCarOverlay={this.handleHideCarOverlay}
+          activeTab={activeTab}
         />
       </div>
     );

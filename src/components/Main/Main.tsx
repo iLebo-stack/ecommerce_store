@@ -18,6 +18,8 @@ interface Props {
   isCartHidden: boolean;
   handleShowCart: () => void;
   products: Product[];
+  handleHideCarOverlay: () => void;
+  activeTab: Tab;
 }
 
 export class Main extends React.Component<Props, {}> {
@@ -35,6 +37,8 @@ export class Main extends React.Component<Props, {}> {
       isCartHidden,
       handleShowCart,
       products,
+      handleHideCarOverlay,
+      activeTab,
     } = this.props;
 
     return (
@@ -50,7 +54,7 @@ export class Main extends React.Component<Props, {}> {
                   )
                 }
               >
-                Category name
+                {`Fashion for ${activeTab.title.toLowerCase()}`}
               </h1>
       
               <div
@@ -58,6 +62,16 @@ export class Main extends React.Component<Props, {}> {
                   cn(
                     'cart-overlay',
                     { 'cart-overlay--hidden' : cartOverlayIsHidden}
+                  )
+                }
+                onClick={handleHideCarOverlay}
+              />
+
+              <div
+                className={
+                  cn(
+                    'cart-modal-wrapper',
+                    { 'cart-modal-wrapper--hidden': cartOverlayIsHidden }
                   )
                 }
               >

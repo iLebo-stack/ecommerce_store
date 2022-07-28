@@ -5,6 +5,11 @@ import './Tabs.scss';
 
 interface Props {
   handleFilterCategoryByActiveTab: (value: string) => void;
+  handleHidePdp: () => void;
+  handleHideCart: () => void;
+  handleHideCarOverlay: () => void;
+  activeTab: Tab;
+  handleSelectActiveTab: (tab: Tab) => void;
 }
 
 interface State {
@@ -12,13 +17,15 @@ interface State {
 }
 
 export class Tabs extends React.Component<Props, State> {
-  state = {
-    selectedTab: 'tab-1',
-  }
-
   render() {
-    const { selectedTab } = this.state;
-    const { handleFilterCategoryByActiveTab } = this.props;
+    const {
+      handleFilterCategoryByActiveTab,
+      handleHideCarOverlay,
+      handleHideCart,
+      handleHidePdp,
+      activeTab,
+      handleSelectActiveTab,
+    } = this.props;
 
     return (
       <ul className="list">
@@ -27,11 +34,14 @@ export class Tabs extends React.Component<Props, State> {
             <a
               href="#"
               className={
-                cn('nav__link', { 'nav__link--active': selectedTab === id })
+                cn('nav__link', { 'nav__link--active': activeTab.id === id })
               }
               onClick={() => {
-                this.setState({ selectedTab: id});
+                handleSelectActiveTab({ id, title });
                 handleFilterCategoryByActiveTab(title);
+                handleHideCarOverlay();
+                handleHideCart();
+                handleHidePdp();
               }}
             >
                 {title}

@@ -1,8 +1,6 @@
 import classNames from 'classnames';
 import React from 'react';
 import './ProductCard.scss';
-import cartIcon from '../../images/cart-icon.svg';
-import cartWheels from '../../images/wheels-cart-icon.svg';
 
 interface Props {
   product: Product;
@@ -35,12 +33,7 @@ export class ProductCard extends React.Component<Props, State> {
     const { isProductImageLoading } = this.state;
 
     return (
-      <article
-        className="products__card"
-        onClick={() => {
-          handleShowPdp(product);
-        }}
-      >
+      <article className="products__card">
         <div className={classNames('preloader', { 'preloader--disabled': !isProductImageLoading })}>
           <div className="preloader-image"></div>
         </div>
@@ -54,7 +47,13 @@ export class ProductCard extends React.Component<Props, State> {
         />
         <p className="products__card-label">{name}</p>
         <p className="products__card-price">{`${selectedCurrency} ${price.toFixed(2)}`}</p>
-        <button type="button" className="products__card-button">
+        <button
+          type="button"
+          className="products__card-button"
+          onClick={() => {
+            handleShowPdp(product);
+          }}
+        >
           <span className="products__card-button-text">Add to cart</span>
         </button>
       </article>
