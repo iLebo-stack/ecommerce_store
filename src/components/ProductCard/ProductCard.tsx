@@ -1,6 +1,8 @@
 import classNames from 'classnames';
 import React from 'react';
 import './ProductCard.scss';
+import cartIcon from '../../images/cart-icon.svg';
+import cartWheels from '../../images/wheels-cart-icon.svg';
 
 interface Props {
   product: Product;
@@ -53,7 +55,7 @@ export class ProductCard extends React.Component<Props, State> {
         <p className="products__card-label">{name}</p>
         <p className="products__card-price">{`${selectedCurrency} ${price.toFixed(2)}`}</p>
         <button type="button" className="products__card-button">
-          {false}
+          <span className="products__card-button-text">Add to cart</span>
         </button>
       </article>
     );

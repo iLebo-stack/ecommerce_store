@@ -48,18 +48,6 @@
     left: 0;
     bottom: 0;
   }
-
-  &::after {
-    content: "";
-    position: absolute;
-    background-image: url(../../images/arrow-bag-symbol.svg);
-    background-repeat: no-repeat;
-    background-position: center;
-    top: 0;
-    right: 0;
-    left: 13px;
-    bottom: 12px;
-  }
 }
 
 .cart-logo {
