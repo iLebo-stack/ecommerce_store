@@ -23,5 +23,5 @@ interface Product {
   quantityInCart: number;
   selectedColor: string;
   selectedSize: string;
-  for: 'men' | 'women' | 'kids';
+  category: 'men' | 'women' | 'kids';
 }

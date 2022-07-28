@@ -2,7 +2,6 @@ import React from 'react';
 import './index_styles/reset.scss';
 import './index_styles/normalize.scss';
 import './App.scss';
-import { tabs } from './mock_apis/navigation-content';
 import { products } from './mock_apis/products';
 import { Header } from './components/Header/Header';
 import { Main } from './components/Main/Main';
@@ -197,7 +196,7 @@ class  App extends React.Component<{}, State> {
 
   handleFilterCategoryByActiveTab(value: string = '') {
     this.setState({ products: products.filter(product => (
-      product.for.toLowerCase() === value.toLowerCase()
+      product.category.toLowerCase() === value.toLowerCase()
     ))})
   }
 

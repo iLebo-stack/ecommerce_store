@@ -1,1 +1,8 @@
+.App {
+  color: #1d1f22;
+  margin: 0 101px;
 
+  @media screen and (max-width: 576px) {
+    margin: 0 20px;
+  }
+}
