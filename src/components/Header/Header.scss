@@ -1,0 +1,96 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 80px;
+
+  &-controls {
+    display: flex;
+    align-items: center;
+    column-gap: 32px;
+  }
+}
+
+.currency-converter__selector {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 160%;
+  width: 114px;
+  text-align: right;
+  cursor: pointer;
+
+  &:focus {
+    filter: drop-shadow(0px 4px 35px rgba(168, 172, 176, 0.19));
+    outline: none;
+  }
+
+  &__option {
+    text-align: center;
+  }
+}
+
+.logo {
+  position: relative;
+  cursor: pointer;
+
+  &__image {
+    display: block;
+  }
+  
+  &::before {
+    content: "";
+    position: absolute;
+    background-image: url(../../images/bag-symbol.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+  }
+}
+
+.cart-logo {
+  position: relative;
+
+  &::after,
+  &::before {
+    content: "";
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background-image: url(../../images/wheels-cart-icon.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  &::after {
+    bottom: -1px;
+    right: 2px;
+  }
+
+  &::before {
+    bottom: -1px;
+    left: 6px;
+  }
+
+  &__image {
+    cursor: pointer;
+  }
+}
+
+.numberOfItemsInTheBag {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: -50%;
+  right: -50%;
+  position: absolute;
+  background-color: #1d1f22;
+  border-radius: 50%;
+  color: #fff;
+  width: 20px;
+  height: 20px;
+  z-index: -1;
+}
+

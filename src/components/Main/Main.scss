@@ -1,0 +1,35 @@
+.title {
+  font-weight: 400;
+  font-size: 42px;
+  line-height: 160%;
+
+  &--hidden {
+    display: none;
+  }
+}
+
+.cart-overlay {
+  background-color: #39374838;
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 79px;
+  height: 100%;
+  padding-bottom: 191px;
+  z-index: 1;
+
+  &--hidden {
+    display: none;
+  }
+}
+
+.cart-modal-wrapper {
+  position: absolute;
+  top: 79px;
+  right: 101px;
+  z-index: 2;
+
+  &--hidden {
+    display: none;
+  }
+}
