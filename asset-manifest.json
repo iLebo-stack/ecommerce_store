@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/ecommerce_store/static/css/main.577a9888.css",
-    "main.js": "/ecommerce_store/static/js/main.8bb2b15e.js",
+    "main.css": "/ecommerce_store/static/css/main.4d8c354a.css",
+    "main.js": "/ecommerce_store/static/js/main.2307ae3a.js",
     "static/media/kids-jacket.jpg": "/ecommerce_store/static/media/kids-jacket.455e18b7c21381b93463.jpg",
     "static/media/man-shoes.jpg": "/ecommerce_store/static/media/man-shoes.2be6767718630d4a6154.jpg",
     "static/media/sweater-for-men.png": "/ecommerce_store/static/media/sweater-for-men.24219f39462c690dc2f2.png",
     "static/media/sweater-for-women.png": "/ecommerce_store/static/media/sweater-for-women.dc538f3f6ab0c865e64d.png",
     "static/media/handbag.png": "/ecommerce_store/static/media/handbag.a05e37976c93d20ae04b.png",
     "static/media/coat-for-women.png": "/ecommerce_store/static/media/coat-for-women.5e1779e0e9d7acf5da8b.png",
+    "static/media/cart.png": "/ecommerce_store/static/media/cart.d344c43e522fa0af4298.png",
     "index.html": "/ecommerce_store/index.html",
     "static/media/cart-icon.svg": "/ecommerce_store/static/media/cart-icon.ea71fb1bb32763052ba995d44a482d3b.svg",
     "static/media/shopping-bag-icon.svg": "/ecommerce_store/static/media/shopping-bag-icon.0c509074e28570fc3617b972c597fab7.svg",
     "static/media/wheels-cart-icon.svg": "/ecommerce_store/static/media/wheels-cart-icon.3131abc448c328f3cf19.svg",
-    "static/media/arrow-bag-symbol.svg": "/ecommerce_store/static/media/arrow-bag-symbol.7f7a1eda86d1529566e8.svg",
     "static/media/bag-symbol.svg": "/ecommerce_store/static/media/bag-symbol.7b7eec2838bd3426f0ca.svg",
-    "main.577a9888.css.map": "/ecommerce_store/static/css/main.577a9888.css.map",
-    "main.8bb2b15e.js.map": "/ecommerce_store/static/js/main.8bb2b15e.js.map"
+    "main.4d8c354a.css.map": "/ecommerce_store/static/css/main.4d8c354a.css.map",
+    "main.2307ae3a.js.map": "/ecommerce_store/static/js/main.2307ae3a.js.map"
   },
   "entrypoints": [
-    "static/css/main.577a9888.css",
-    "static/js/main.8bb2b15e.js"
+    "static/css/main.4d8c354a.css",
+    "static/js/main.2307ae3a.js"
   ]
 }
