@@ -6,7 +6,6 @@ import { products } from './mock_apis/products';
 import { Header } from './components/Header/Header';
 import { Main } from './components/Main/Main';
 
-
 interface State {
   selectedCurrency: string;
   cartOverlayIsHidden: boolean;
@@ -15,6 +14,8 @@ interface State {
   isCartHidden: boolean;
   products: Product[];
   activeTab: Tab;
+  checkedOut: boolean;
+  showWarning: boolean;
 }
 
 class  App extends React.Component<{}, State> {
@@ -29,6 +30,8 @@ class  App extends React.Component<{}, State> {
       id: 'tab-1',
       title: 'WOWEN'
     },
+    checkedOut: false,
+    showWarning: false,
   }
 
   constructor(props: {} | Readonly<{}>) {
@@ -47,6 +50,8 @@ class  App extends React.Component<{}, State> {
     this.handleHideCarOverlay = this.handleHideCarOverlay.bind(this);
     this.handleFilterCategoryByActiveTab = this.handleFilterCategoryByActiveTab.bind(this);
     this.handleSelectActiveTab = this.handleSelectActiveTab.bind(this);
+    this.checkout = this.checkout.bind(this);
+    this.hideCheckoutModal = this.hideCheckoutModal.bind(this);
   }
 
   handleCurrencyChange(value: string) {
@@ -200,12 +205,35 @@ class  App extends React.Component<{}, State> {
     ))})
   }
 
-  componentDidMount() {
-    this.handleFilterCategoryByActiveTab('women');
-  }
-
   handleSelectActiveTab(tab: Tab) {
     this.setState({ activeTab: tab });
+  }
+
+  checkout() {
+    if (this.state.productsInTheBag.length) {
+      this.setState(prevState => ({
+        ...prevState,
+        checkedOut: true,
+        isCartHidden: true,
+        cartOverlayIsHidden: true,
+        productsInTheBag: [],
+        clickedProduct: null,
+      }));
+    } else {
+      this.setState({ showWarning: true });
+
+      setTimeout(() => {
+        this.setState({ showWarning: false })
+      }, 2000)
+    }
+  }
+
+  hideCheckoutModal() {
+    this.setState({ checkedOut: false });
+  }
+
+  componentDidMount() {
+    this.handleFilterCategoryByActiveTab('women');
   }
 
   render() {
@@ -217,6 +245,8 @@ class  App extends React.Component<{}, State> {
       isCartHidden,
       products,
       activeTab,
+      checkedOut,
+      showWarning,
     } = this.state;
 
     return (
@@ -249,6 +279,12 @@ class  App extends React.Component<{}, State> {
           products={products}
           handleHideCarOverlay={this.handleHideCarOverlay}
           activeTab={activeTab}
+          checkedOut={checkedOut}
+          checkout={this.checkout}
+          hideCheckoutModal={this.hideCheckoutModal}
+          showWarning={showWarning}
+          handleHidePdp={this.handleHidePdp}
+          handleHideCart={this.handleHideCart}
         />
       </div>
     );

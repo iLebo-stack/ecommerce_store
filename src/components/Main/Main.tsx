@@ -4,6 +4,8 @@ import { CartModal } from '../CartModal/CartModal';
 import { ProductList } from '../ProductList/ProductList';
 import './Main.scss';
 import { Cart } from '../Cart/Cart';
+import { CheckoutModal } from '../CheckoutModal/CheckoutModal';
+import { Warning } from '../Warning/Warning';
 
 interface Props {
   selectedCurrency: string;
@@ -20,6 +22,12 @@ interface Props {
   products: Product[];
   handleHideCarOverlay: () => void;
   activeTab: Tab;
+  checkedOut: boolean;
+  checkout: () => void;
+  hideCheckoutModal: () => void;
+  showWarning: boolean;
+  handleHideCart: () => void;
+  handleHidePdp: () => void;
 }
 
 export class Main extends React.Component<Props, {}> {
@@ -39,10 +47,30 @@ export class Main extends React.Component<Props, {}> {
       products,
       handleHideCarOverlay,
       activeTab,
+      checkedOut,
+      checkout,
+      hideCheckoutModal,
+      showWarning,
+      handleHideCart,
+      handleHidePdp,
     } = this.props;
 
     return (
       <main>
+        <div className={cn(
+          'checkout-modal-wrapper',
+          {'checkout-modal-wrapper--hidden': !checkedOut},
+        )}>
+          <CheckoutModal checkedOut={checkedOut} hideCheckoutModal={hideCheckoutModal} />
+        </div>
+
+        <div className={cn(
+          'warning-wrapper',
+          { 'warning-wrapper--active': showWarning }
+        )}>
+          <Warning />
+        </div>
+
         {isCartHidden
           ? (
             <>
@@ -83,6 +111,7 @@ export class Main extends React.Component<Props, {}> {
                   handleSelectColor={handleSelectColor}
                   selectedCurrency={selectedCurrency}
                   handleShowCart={handleShowCart}
+                  checkout={checkout}
                 />
               </div>
       
@@ -94,6 +123,9 @@ export class Main extends React.Component<Props, {}> {
                 handleAddProductsInTheBag={handleAddProductsInTheBag}
                 handleSelectSize={handleSelectSize}
                 handleSelectColor={handleSelectColor}
+                handleHidePdp={handleHidePdp}
+                handleHideCart={handleHideCart}
+                handleHideCarOverlay={handleHideCarOverlay}
               />
             </>
           )
@@ -106,6 +138,10 @@ export class Main extends React.Component<Props, {}> {
               handleSelectSize={handleSelectSize}
               handleSelectColor={handleSelectColor}
               isCartHidden={isCartHidden}
+              checkout={checkout}
+              handleHidePdp={handleHidePdp}
+              handleHideCart={handleHideCart}
+              handleHideCarOverlay={handleHideCarOverlay}
             />   
           )}
 

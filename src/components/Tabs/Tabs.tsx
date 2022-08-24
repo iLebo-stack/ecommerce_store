@@ -56,6 +56,7 @@ export class Tabs extends React.Component<Props, {}> {
                   handleHideCarOverlay();
                   handleHideCart();
                   handleHidePdp();
+                  toggleMenu();
                 }}
               >
                   {title}

@@ -35,7 +35,7 @@ export class ProductCard extends React.Component<Props, State> {
     return (
       <article className="products__card">
         <div className={classNames('preloader', { 'preloader--disabled': !isProductImageLoading })}>
-          <div className="preloader-image"></div>
+          <div className="preloader-image" />
         </div>
         <img
           src={image}

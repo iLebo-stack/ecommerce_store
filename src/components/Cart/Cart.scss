@@ -32,6 +32,12 @@ $c-green: #5ece7b;
     display: flex;
     justify-content: space-between;
 
+    @media screen and (max-width: 764px) {
+      flex-direction: column;
+      align-items: center;
+      row-gap: 20px;
+    }
+
     &::after {
       content: "";
       position: absolute;
@@ -155,23 +161,6 @@ $c-green: #5ece7b;
       height: 100%;
       object-fit: cover;
     }
-
-    &-scroll {
-      position: absolute;
-      display: flex;
-      column-gap: 8px;
-      right: 18px;
-      bottom: 16px;
-
-      &-button {
-        text-align: center;
-        background-color: #000000ba;
-        color: #fff;
-        width: 24px;
-        height: 24px;
-        line-height: 24px;
-      }
-    }
   }
 
   &__cost {
@@ -197,6 +186,18 @@ $c-green: #5ece7b;
     line-height: 120%;
     width: 279px;
     height: 43px;
+    cursor: pointer;
+  }
+
+  &__back-button {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 120%;
+    color: #1d1f22;
+    width: 140px;
+    height: 43px;
+    background: #fff;
+    border: 1px solid #1d1f22;
     cursor: pointer;
   }
 }

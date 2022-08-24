@@ -10,6 +10,10 @@ interface Props {
   handleSelectSize: (productToChangeSize: Product, newSize: string) => void;
   handleSelectColor: (productToChangeColor: Product, newColor: string) => void;
   isCartHidden: boolean;
+  checkout: () => void;
+  handleHideCart: () => void;
+  handleHidePdp: () => void;
+  handleHideCarOverlay: () => void;
 }
 
 export class Cart extends React.Component<Props, {}>  {
@@ -22,6 +26,10 @@ export class Cart extends React.Component<Props, {}>  {
       handleSelectColor,
       handleSelectSize,
       isCartHidden,
+      checkout,
+      handleHideCart,
+      handleHidePdp,
+      handleHideCarOverlay,
     } = this.props;
 
     const totalCost = productsInTheBag.reduce((a, b) => a + (b.price * b.quantityInCart), 0);
@@ -35,6 +43,17 @@ export class Cart extends React.Component<Props, {}>  {
           { 'cart--hidden': isCartHidden },
         )
       }>
+        <button
+          type="button"
+          className="cart__back-button"
+          onClick={() => {
+            handleHideCart();
+            handleHidePdp();
+            handleHideCarOverlay();
+          }}
+        >
+          Back
+        </button>
         <h2 className="cart__title">CART</h2>
 
         {quantity === 0
@@ -134,22 +153,6 @@ export class Cart extends React.Component<Props, {}>  {
                           alt={product.name + product.description}
                           className="cart__item-image"
                         />
-
-                        <div className="cart__item-scroll">
-                          <button
-                            type="button"
-                            className="cart__item-scroll-button cart__item-scroll--left"
-                          >
-                            {'<'}
-                          </button>
-
-                          <button
-                            type="button"
-                            className="cart__item-scroll-button cart__item-scroll--right"
-                          >
-                            {'>'}
-                          </button>
-                        </div>
                       </div>
                     </div>
                   </article>
@@ -164,7 +167,7 @@ export class Cart extends React.Component<Props, {}>  {
           <p className="cart__cost-total">{`Total: ${selectedCurrency}${totalCost.toFixed(2)}`}</p>
         </article>
 
-        <button type="button" className="cart__button">ORDER</button>
+        <button type="button" className="cart__button" onClick={checkout}>ORDER</button>
       </section>
     )
   }

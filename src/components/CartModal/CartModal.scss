@@ -9,13 +9,11 @@ $c-green: #5ece7b;
 
 .item {
   display: flex;
+  justify-content: space-between;
   column-gap: 48px;
 
-  &__details {
-    position: relative;
-  }
-
   &__image {
+    position: relative;
     width: 121px;
     height: 190px;
   }
@@ -111,7 +109,7 @@ $c-green: #5ece7b;
       justify-content: space-between;
       align-items: center;
       position: absolute;
-      right: -40px;
+      left: -40px;
       top: 0;
       bottom: 0;
     }

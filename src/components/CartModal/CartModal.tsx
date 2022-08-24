@@ -10,6 +10,7 @@ interface Props {
   handleSelectColor: (productToChangeColor: Product, newSize: string) => void;
   selectedCurrency: string;
   handleShowCart: () => void;
+  checkout: () => void;
 }
 
 export class CartModal extends React.Component<Props, {}> {
@@ -22,6 +23,7 @@ export class CartModal extends React.Component<Props, {}> {
       handleSelectColor,
       selectedCurrency,
       handleShowCart,
+      checkout,
     } = this.props;
 
     const displayedProducts = productsInTheBag
@@ -99,7 +101,9 @@ export class CartModal extends React.Component<Props, {}> {
                     ))}
                   </div>
                 </div>
-
+              </div>
+              
+              <div className="item__image">
                 <div className="item__quantity-controls">
                   <button
                     type="button"
@@ -123,9 +127,7 @@ export class CartModal extends React.Component<Props, {}> {
                     -
                   </button>
                 </div>
-              </div>
-              
-              <div className="item__image">
+
                 <img
                   src={displayedProduct.image}
                   alt={displayedProduct.name}
@@ -156,6 +158,7 @@ export class CartModal extends React.Component<Props, {}> {
           <button
             type="button"
             className="cart-modal-controls__check-out-button"
+            onClick={checkout}
           >
             CHECK OUT
           </button>

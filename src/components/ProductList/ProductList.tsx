@@ -11,6 +11,9 @@ interface Props {
   handleAddProductsInTheBag: (newProduct: Product) => void;
   handleSelectSize: (productToChangeSize: Product, newSize: string) => void;
   handleSelectColor: (productToChangeColor: Product, newSize: string) => void;
+  handleHideCart: () => void;
+  handleHidePdp: () => void;
+  handleHideCarOverlay: () => void;
 }
 
 export class ProductList extends React.Component<Props, {}> {
@@ -23,6 +26,9 @@ export class ProductList extends React.Component<Props, {}> {
       handleAddProductsInTheBag,
       handleSelectSize,
       handleSelectColor,
+      handleHideCart,
+      handleHidePdp,
+      handleHideCarOverlay,
     } = this.props;
 
     return (
@@ -34,6 +40,9 @@ export class ProductList extends React.Component<Props, {}> {
               handleAddProductsInTheBag={handleAddProductsInTheBag}
               handleSelectSize={handleSelectSize}
               handleSelectColor={handleSelectColor}
+              handleHidePdp={handleHidePdp}
+              handleHideCart={handleHideCart}
+              handleHideCarOverlay={handleHideCarOverlay}
             />
         )
         : (
