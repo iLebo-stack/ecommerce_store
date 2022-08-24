@@ -1,0 +1,184 @@
+$desktopLength: 1340px;
+
+.product_preview {
+  display: flex;
+  row-gap: 40px;
+  margin-bottom: 191px;
+
+  @media screen and (max-width: $desktopLength) {
+    flex-direction: column;
+  }
+
+  &__title {
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 27px;
+    margin-bottom: 16px;
+  }
+
+  &__description {
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 27px;
+    margin-bottom: 43px;
+  }
+
+  &__side_images {
+    display: flex;
+    flex-direction: column;
+    row-gap: 32px;
+    margin-right: 50px;
+
+    @media screen and (max-width: $desktopLength) {
+      flex-direction: row;
+      justify-content: center;
+      column-gap: 15px;
+      margin-right: 0;
+    }
+  }
+
+  &__main_image {
+    width: 610px;
+    height: 511px;
+    margin-right: 100px;
+
+    @media screen and (max-width: $desktopLength) {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &__side_image {
+    width: 80px;
+    height: 80px;
+  }
+
+  &__image {
+    min-width: 610px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    @media screen and (max-width: $desktopLength) {
+      min-width: unset;
+    }
+  }
+
+  &__details {
+    width: 292px;
+
+    @media screen and (max-width: $desktopLength){
+      width: auto;
+    }
+
+    &__label {
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 18px;
+      margin-bottom: 8px;
+    }
+  }
+
+  &__size_buttons {
+    display: flex;
+    column-gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  &__size_button {
+    background-color: #fff;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 18px;
+    width: 63px;
+    height: 45px;
+    border: 1px solid #1d1f22;
+    cursor: pointer;
+
+    &--selected {
+      background-color: #1d1f22;
+      color: #fff;
+    }
+  }
+
+  &__color_buttons {
+    display: flex;
+    column-gap: 8px;
+    margin-bottom: 38px;
+  }
+
+  &__color_button {
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+
+    &--selected {
+      border: 1px solid #5ece7b;
+    }
+  }
+
+  &__price {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 18px;
+    margin-bottom: 20px;
+  }
+
+  &__price_label {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 18px;
+    margin-bottom: 10px;
+  }
+
+  &__button {
+    position: relative;
+    width: 100%;
+    color: #fff;
+    background: #5ECE7B;
+    padding: 16px 32px;
+    margin-bottom: 40px;
+    cursor: pointer;
+
+    &--active {
+      &::before {
+        content: "";
+        right: -50px;
+        top: 0;
+        position: absolute;
+        background-image: url(../../images/successful-tick.svg.png);
+        background-position: center;
+        background-size: 30px;
+        background-repeat: no-repeat;
+        width: 50px;
+        height: 100%;
+      }
+    }
+
+
+    @media screen and (max-width: $desktopLength) {
+      width: fit-content;
+    }
+  }
+
+  &__promotion {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 159.96%;
+    max-width: 34ch;
+  }
+
+  &__back-button {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 120%;
+    margin-bottom: 30px;
+    color: #1d1f22;
+    width: 140px;
+    height: 43px;
+    background: #fff;
+    border: 1px solid #1d1f22;
+    cursor: pointer;
+  }
+}
