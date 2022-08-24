@@ -11,12 +11,17 @@
 .cart-overlay {
   background-color: #39374838;
   position: absolute;
-  left: -300px;
-  right: -300px;
+  left: -101px;
+  right: -101px;
   top: 79px;
   height: 100%;
   padding-bottom: 191px;
   z-index: 1;
+
+  @media screen and (max-width: 576px) {
+    left: -20px;
+    right: -20px;
+  }
 
   &--hidden {
     display: none;
