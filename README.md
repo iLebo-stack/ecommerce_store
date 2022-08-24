@@ -19,7 +19,7 @@
 
 ### Links
 
-- Live Site URL: [Add live site URL here](https://ilebo-stack.github.io/ecommerce_store/)
+- Live Site URL: [eCommerce site](https://ilebo-stack.github.io/ecommerce_store/)
 
 ## My process
 
