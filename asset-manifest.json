@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/ecommerce_store/static/css/main.f7c8d29f.css",
+    "main.css": "/ecommerce_store/static/css/main.0ae481af.css",
     "main.js": "/ecommerce_store/static/js/main.e366d241.js",
     "static/media/kids-jacket.jpg": "/ecommerce_store/static/media/kids-jacket.455e18b7c21381b93463.jpg",
     "static/media/man-shoes.jpg": "/ecommerce_store/static/media/man-shoes.2be6767718630d4a6154.jpg",
@@ -15,11 +15,11 @@
     "static/media/shopping-bag-icon.svg": "/ecommerce_store/static/media/shopping-bag-icon.0c509074e28570fc3617b972c597fab7.svg",
     "static/media/wheels-cart-icon.svg": "/ecommerce_store/static/media/wheels-cart-icon.3131abc448c328f3cf19.svg",
     "static/media/bag-symbol.svg": "/ecommerce_store/static/media/bag-symbol.7b7eec2838bd3426f0ca.svg",
-    "main.f7c8d29f.css.map": "/ecommerce_store/static/css/main.f7c8d29f.css.map",
+    "main.0ae481af.css.map": "/ecommerce_store/static/css/main.0ae481af.css.map",
     "main.e366d241.js.map": "/ecommerce_store/static/js/main.e366d241.js.map"
   },
   "entrypoints": [
-    "static/css/main.f7c8d29f.css",
+    "static/css/main.0ae481af.css",
     "static/js/main.e366d241.js"
   ]
 }
